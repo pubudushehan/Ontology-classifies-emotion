@@ -1,0 +1,116 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seo: <http://www.semanticweb.org/sinhala-emotion-ontology#> .
+
+seo:Emotion a rdfs:Class .
+
+seo:Word a rdfs:Class .
+
+seo:hasEmotion a rdf:Property ;
+    rdfs:domain seo:Word ;
+    rdfs:range seo:Emotion .
+
+seo:word_-1288420281785242583 a seo:Word ;
+    rdfs:label "එහෙම"@si ;
+    seo:hasEmotion seo:Neutral .
+
+seo:word_-1319626473677456678 a seo:Word ;
+    rdfs:label "විදිහට"@si ;
+    seo:hasEmotion seo:Neutral .
+
+seo:word_-143429576627052020 a seo:Word ;
+    rdfs:label "කෝප"@si ;
+    seo:hasEmotion seo:Angry .
+
+seo:word_-1485408188889452157 a seo:Word ;
+    rdfs:label "ප්රීතිය"@si ;
+    seo:hasEmotion seo:Happy .
+
+seo:word_-1577234631409063788 a seo:Word ;
+    rdfs:label "පුදුම"@si ;
+    seo:hasEmotion seo:Happy .
+
+seo:word_-1665650685238374690 a seo:Word ;
+    rdfs:label "රණ්ඩු"@si ;
+    seo:hasEmotion seo:Angry .
+
+seo:word_-236082657000963643 a seo:Word ;
+    rdfs:label "ගැහෙන්න"@si ;
+    seo:hasEmotion seo:Angry .
+
+seo:word_-2452003028913127633 a seo:Word ;
+    rdfs:label "බිඳ"@si ;
+    seo:hasEmotion seo:Sad .
+
+seo:word_-2952038232240057288 a seo:Word ;
+    rdfs:label "අසරදම්"@si ;
+    seo:hasEmotion seo:Sad .
+
+seo:word_-3484954163174085569 a seo:Word ;
+    rdfs:label "සාමාන්ය"@si ;
+    seo:hasEmotion seo:Neutral .
+
+seo:word_-3791102181324943038 a seo:Word ;
+    rdfs:label "වේදනාව"@si ;
+    seo:hasEmotion seo:Sad .
+
+seo:word_-4500022604753728222 a seo:Word ;
+    rdfs:label "බැස්"@si ;
+    seo:hasEmotion seo:Angry .
+
+seo:word_-5797037867966059280 a seo:Word ;
+    rdfs:label "කඳුළු"@si ;
+    seo:hasEmotion seo:Sad .
+
+seo:word_-6480452279089722445 a seo:Word ;
+    rdfs:label "තිබේ"@si ;
+    seo:hasEmotion seo:Neutral .
+
+seo:word_-6817645337218612956 a seo:Word ;
+    rdfs:label "ආඩම්බර"@si ;
+    seo:hasEmotion seo:Happy .
+
+seo:word_-6933775584079770105 a seo:Word ;
+    rdfs:label "නැත"@si ;
+    seo:hasEmotion seo:Neutral .
+
+seo:word_-7342643841306648067 a seo:Word ;
+    rdfs:label "දුක"@si ;
+    seo:hasEmotion seo:Sad .
+
+seo:word_-8941607957966458988 a seo:Word ;
+    rdfs:label "ද්වේශ"@si ;
+    seo:hasEmotion seo:Angry .
+
+seo:word_3083395829230354794 a seo:Word ;
+    rdfs:label "සිනා"@si ;
+    seo:hasEmotion seo:Happy .
+
+seo:word_4247048374231780082 a seo:Word ;
+    rdfs:label "හැඬුම්"@si ;
+    seo:hasEmotion seo:Sad .
+
+seo:word_6845512647178444431 a seo:Word ;
+    rdfs:label "සතුට"@si ;
+    seo:hasEmotion seo:Happy .
+
+seo:word_7078611067438926977 a seo:Word ;
+    rdfs:label "හිනාව"@si ;
+    seo:hasEmotion seo:Happy .
+
+seo:word_7187815635017892468 a seo:Word ;
+    rdfs:label "තරහ"@si ;
+    seo:hasEmotion seo:Angry .
+
+seo:Neutral a seo:Emotion ;
+    rdfs:label "Neutral" .
+
+seo:Angry a seo:Emotion ;
+    rdfs:label "Angry" .
+
+seo:Happy a seo:Emotion ;
+    rdfs:label "Happy" .
+
+seo:Sad a seo:Emotion ;
+    rdfs:label "Sad" .
+

@@ -1,0 +1,6 @@
+rdflib==7.0.0
+sentence-transformers==3.0.1
+fastapi==0.115.0
+uvicorn==0.30.6
+indic-nlp-library==0.92
+numpy<2
