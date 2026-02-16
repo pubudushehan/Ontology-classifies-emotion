@@ -1,0 +1,3 @@
+Research
+
+To do this research, I need to create a Sinhala data set. Here I need to create Sinhala sentences as sentences. It needs to be created under three emotions and I hope to create it under the sad emotion first. I need to create about 1000 such sentences to create the data set. Use simple sentences. I will provide you with some angry sentences that I created as an example. Refer to that too and create as many sad sentences as you can.
