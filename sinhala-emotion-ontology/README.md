@@ -132,3 +132,47 @@ python src/evaluate.py
 3.  **FastAPI**: [https://fastapi.tiangolo.com/](https://fastapi.tiangolo.com/)
 4.  **RDFLib**: [https://rdflib.readthedocs.io/](https://rdflib.readthedocs.io/)
 5.  **IndicNLP**: [https://anoopkunchukuttan.github.io/indic_nlp_library/](https://anoopkunchukuttan.github.io/indic_nlp_library/)
+
+
+The system classifies your sentence as Happy because it found a specific "trigger word" in your sentence that exists in the Ontology knowledge base.
+
+🔍 The "Deep Flow" of Classification
+Here is exactly what happens inside the system when you input: "අද හවසට ක්රිකට් ගහන්න සෙට් වෙමු, කාලෙකින් සෙල්ලම් කළේ නෑනේ."
+
+1. Tokenization (Breaking it down)
+The system first uses IndicNLP to split your sentence into individual words (tokens): ['අද', 'හවසට', 'ක්රිකට්', 'ගහන්න', 'සෙට්', 'වෙමු', ',', 'කාලෙකින්', 'සෙල්ලම්', 'කළේ', 'නෑනේ', '.']
+
+2. Ontology Check (The "Rule" Layer)
+The system loops through each word and asks the Ontology: "Do I know this word?"
+
+❌ "අද": Not in the lexicon.
+❌ "හවසට": Not in the lexicon.
+❌ "ක්රිකට්": Not in the lexicon.
+❌ "ගහන්න": Not in the lexicon.
+✅ "සෙට්" (Set): FOUND!
+In your 
+lexicon.json
+ (and the generated TTL file), the word "සෙට්" is listed under Happy.
+
+json
+"Happy": [
+    ...
+    "සෙට්",
+    ...
+]
+3. Immediate Decision
+Because the system is designed to prioritize the Ontology (rules), as soon as it finds "සෙට්", it stops looking. It assumes that if you used a known "Happy" keyword, the intent is likely Happy.
+
+Result: Happy
+Confidence: 1.0 (100% because it's a rule match)
+Method: Ontology
+4. (Hypothetical) If No Match Was Found...
+If your sentence didn't have the word "සෙට්" (e.g., "අද හවසට ක්රිකට් ගහමු"), and no other words matched:
+
+The Ontology check would return None.
+The system would switch to Method 2: ML (LaBSE).
+It would convert the whole sentence into numbers (a vector).
+It would compare that vector to the "Average Happy Sentence" (centroid) it learned from your 3,500 samples.
+It would pick the emotion closest to your sentence meaning.
+Summary
+The system matched the word "සෙට්" to the Happy category in your ontology. It checks every word one by one, but stops as soon as it finds a match.

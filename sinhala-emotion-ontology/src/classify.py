@@ -47,20 +47,14 @@ class EmotionClassifier:
 
     def classify_ontology(self, text):
         """
-        Check if any token in the text exists in the ontology as a word with an emotion.
+        Check all tokens in the text against the ontology.
+        Returns a dictionary of emotion counts found in the text.
         """
         tokens = self.tokenize(text)
-        
-        # Simple keyword matching against ontology
-        # Query: ?w label "token" . ?w hasEmotion ?e . ?e label ?emotion
+        emotion_counts = {}
         
         for token in tokens:
-            token_literal = Literal(token, lang="si")
-            # Try to match label. Note: Our ontology has labels as literals.
-            # We iterate or query. Query is cleaner but might be slower if many tokens.
-            # Let's use a query for the whole text tokens if possible, or just iterate.
-            # Iterating tokens and query for each:
-            
+            # SPARQL Query to find emotion for the token
             query = """
             SELECT ?emotion_label
             WHERE {
@@ -72,26 +66,17 @@ class EmotionClassifier:
             }
             """
             
-            # Use binding
-            # Note: rdflib might need precise literal matching (lang tag etc)
-            # In create_ontology.py we added lang="si".
-            # So we must match that.
-            
-            # Let's try to query.
-            # This is a basic implementation. A more robust one would gather all hits and vote.
-            
-            # Optimization: Load lexicon into memory map for fast lookup if ontology is large.
-            # But here we stick to "Using Ontology".
-            
-            res = self.g.query(query, initBindings={'target': Literal(token)}) # try without lang first? No, sparql filter str() works on value.
+            # Execute query
+            res = self.g.query(query, initBindings={'target': Literal(token)})
             
             for row in res:
-                return str(row.emotion_label), 1.0 # High confidence for lexicon match
-                
-            # Try with lang tag if above fails or just iterate all words in graph (slower but safer)
-            # Actually, let's keep it simple. If SPARQL fails, we fall back to ML.
-            
-        return None, 0.0
+                emotion = str(row.emotion_label)
+                if emotion in emotion_counts:
+                    emotion_counts[emotion] += 1
+                else:
+                    emotion_counts[emotion] = 1
+                    
+        return emotion_counts
 
     def classify_ml(self, text):
         if not self.model or not self.centroids:
@@ -104,12 +89,7 @@ class EmotionClassifier:
         best_score = -1.0
         
         for label, centroid in self.centroids.items():
-            if label == "Neutral": continue # We handle Neutral via threshold usually, but let's see. 
-            # Actually, if we have a Neutral centroid (we have 1 sample), it might be bad.
-            # So let's ignore the single Neutral sample centroid if it exists, or just use it?
-            # 1 sample is not enough to form a cluster.
-            # Strategy: Compare with Happy, Sad, Angry.
-            # If max score < 0.6 -> Neutral.
+            if label == "Neutral": continue 
             
             score = np.dot(embedding, centroid)
             if score > best_score:
@@ -117,25 +97,43 @@ class EmotionClassifier:
                 best_label = label
                 
         # Threshold for Neutral
-        if best_score < 0.25: # LaBSE is cosine sim. 0.25 is very low. 
-            # In practice, even different sentences might have 0.3-0.4 similarity.
-            # Let's ensure we pick the *best* one, and if it's really low, Neutral.
-            # But the user wants "Neutral" classification too.
-            # Since we lack neutral training data, we assume "None of the above" = Neutral.
-            return "Neutral", round(float(best_score), 4) # Return Neutral but with the score of the closest other emotion? Or just 0.5?
-            # Let's return Neutral and low confidence.
+        if best_score < 0.25: 
+            return "Neutral", round(float(best_score), 4)
         
         return best_label, round(float(best_score), 4)
 
     def predict(self, text):
-        # 1. Ontology Check
-        label, conf = self.classify_ontology(text)
-        if label:
-            return {"label": label, "confidence": conf, "method": "Ontology"}
+        # 1. Ontology Check (All words)
+        emotion_counts = self.classify_ontology(text)
         
-        # 2. ML Check
-        label, conf = self.classify_ml(text)
-        return {"label": label, "confidence": conf, "method": "ML (LaBSE)"}
+        # Logic:
+        # - If no matches -> ML
+        # - If matches found for ONLY ONE emotion -> Return that emotion (Ontology)
+        # - If matches found for MULTIPLE emotions -> Conflict -> ML
+        
+        if not emotion_counts:
+            # No ontology matches
+            label, conf = self.classify_ml(text)
+            return {"label": label, "confidence": conf, "method": "ML (LaBSE) - No Ontology Match"}
+            
+        found_emotions = list(emotion_counts.keys())
+        
+        if len(found_emotions) == 1:
+            # Single emotion matched (clean match)
+            emotion = found_emotions[0]
+            count = emotion_counts[emotion]
+            # Confidence could be 1.0 or scaled by count? 1.0 for now as it's rule-based.
+            return {"label": emotion, "confidence": 1.0, "method": f"Ontology (Matched {count} words)"}
+            
+        else:
+            # Conflict (e.g. {'Happy': 1, 'Sad': 1})
+            # Fallback to ML to resolve context
+            label, conf = self.classify_ml(text)
+            return {
+                "label": label, 
+                "confidence": conf, 
+                "method": f"ML (LaBSE) - Conflict Resolution {emotion_counts}"
+            }
 
 if __name__ == "__main__":
     # Test
