@@ -34,9 +34,27 @@ def build_model():
                 samples_by_label[label] = []
             samples_by_label[label].append(text)
 
-    print(f"Found labels: {list(samples_by_label.keys())}")
+    print(f"Found labels from data: {list(samples_by_label.keys())}")
     for label, texts in samples_by_label.items():
         print(f"  {label}: {len(texts)} samples")
+
+    # Load Lexicon to augment data
+    lexicon_path = os.path.join(base_dir, "ontology", "lexicon.json")
+    if os.path.exists(lexicon_path):
+        print(f"Loading lexicon from {lexicon_path}...")
+        with open(lexicon_path, "r", encoding="utf-8") as f:
+            lexicon = json.load(f)
+            
+        for emotion, words in lexicon.items():
+            if emotion in samples_by_label:
+                print(f"  Augmenting {emotion} with {len(words)} lexicon words.")
+                samples_by_label[emotion].extend(words)
+            else:
+                # If emotion exists in lexicon but not in data, add it if valid
+                 if emotion in ["Happy", "Sad", "Angry", "Neutral"]: # Strict check
+                    samples_by_label[emotion] = words
+    else:
+        print("Warning: Lexicon file not found. Skipping augmentation.")
 
     # Load Model
     print(f"Loading model {MODEL_NAME}...")
