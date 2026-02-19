@@ -19,6 +19,7 @@ class ClassificationResponse(BaseModel):
     emotion: str
     confidence: float
     method: str
+    matched_words: dict | None = None
 
 @app.get("/")
 def read_root():
@@ -34,7 +35,8 @@ def classify_text(text: str = Query(..., description="Sinhala sentence to classi
         "text": text,
         "emotion": result["label"],
         "confidence": result["confidence"],
-        "method": result["method"] # "Ontology" or "ML (LaBSE)"
+        "method": result["method"], # "Ontology" or "ML (LaBSE)"
+        "matched_words": result.get("matched_words")
     }
 
 if __name__ == "__main__":

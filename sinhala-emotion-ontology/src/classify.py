@@ -45,13 +45,18 @@ class EmotionClassifier:
     def tokenize(self, text):
         return indic_tokenize.trivial_tokenize(text)
 
+        return emotion_counts, matched_words_dict
+
     def classify_ontology(self, text):
         """
         Check all tokens in the text against the ontology.
-        Returns a dictionary of emotion counts found in the text.
+        Returns:
+            - emotion_counts: Dict of emotion counts (e.g., {'Happy': 2})
+            - matched_words: Dict of list of words per emotion (e.g., {'Happy': ['word1', 'word2']})
         """
         tokens = self.tokenize(text)
         emotion_counts = {}
+        matched_words_dict = {}
         
         for token in tokens:
             # SPARQL Query to find emotion for the token
@@ -73,10 +78,12 @@ class EmotionClassifier:
                 emotion = str(row.emotion_label)
                 if emotion in emotion_counts:
                     emotion_counts[emotion] += 1
+                    matched_words_dict[emotion].append(token)
                 else:
                     emotion_counts[emotion] = 1
+                    matched_words_dict[emotion] = [token]
                     
-        return emotion_counts
+        return emotion_counts, matched_words_dict
 
     def classify_ml(self, text):
         if not self.model or not self.centroids:
@@ -104,7 +111,7 @@ class EmotionClassifier:
 
     def predict(self, text):
         # 1. Ontology Check (All words)
-        emotion_counts = self.classify_ontology(text)
+        emotion_counts, matched_words = self.classify_ontology(text)
         
         # Logic:
         # - If no matches -> ML
@@ -114,7 +121,12 @@ class EmotionClassifier:
         if not emotion_counts:
             # No ontology matches
             label, conf = self.classify_ml(text)
-            return {"label": label, "confidence": conf, "method": "ML (LaBSE) - No Ontology Match"}
+            return {
+                "label": label, 
+                "confidence": conf, 
+                "method": "ML (LaBSE) - No Ontology Match",
+                "matched_words": {}
+            }
             
         found_emotions = list(emotion_counts.keys())
         
@@ -123,7 +135,12 @@ class EmotionClassifier:
             emotion = found_emotions[0]
             count = emotion_counts[emotion]
             # Confidence could be 1.0 or scaled by count? 1.0 for now as it's rule-based.
-            return {"label": emotion, "confidence": 1.0, "method": f"Ontology (Matched {count} words)"}
+            return {
+                "label": emotion, 
+                "confidence": 1.0, 
+                "method": f"Ontology (Matched {count} words)",
+                "matched_words": matched_words
+            }
             
         else:
             # Conflict (e.g. {'Happy': 1, 'Sad': 1})
@@ -132,14 +149,15 @@ class EmotionClassifier:
             return {
                 "label": label, 
                 "confidence": conf, 
-                "method": f"ML (LaBSE) - Conflict Resolution {emotion_counts}"
+                "method": f"ML (LaBSE) - Conflict Resolution {emotion_counts}",
+                "matched_words": matched_words
             }
 
 if __name__ == "__main__":
     # Test
     classifier = EmotionClassifier()
     test_sentences = [
-        "මම අද ගොඩක් සතුටින්",  # Expect Happy
+        "මම අද ගොඩක් සතුටුයි",  # Expect Happy (matches 'සතුටුයි')
         "මට දුකයි",            # Expect Sad
         "මම කේන්තියෙන් ඉන්නේ",      # Expect Angry (if lexicon matches or ML)
     ]
