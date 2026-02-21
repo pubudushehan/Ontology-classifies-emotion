@@ -46,3 +46,33 @@ Utilization of **Transformer-based Language Models** to capture context, ambigui
 
 **Why this matters:**
 Achieves robustness in real-world scenarios where language is subtle, sarcastic, or mixed, complementing the rigidity of the Ontology (Anushya et al., 2020).
+
+
+In the context of a Turtle (
+.ttl
+) file, these are prefixes (namespaces) used to make the code readable. Instead of writing long Internet addresses (URIs) every time, we use short abbreviations like seo: or rdf:.
+
+Here is the breakdown of the specific ones in your file:
+
+1. rdf (Resource Description Framework)
+Full URI: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Meaning: This is the standard W3C language used to describe information on the web.
+Common Use: You often see rdf:type (which is shortened to just a in Turtle files).
+In your file: It defines the core grammar. For example, rdf:Property means "this is a relationship type."
+
+2. rdfs (RDF Schema)
+Full URI: <http://www.w3.org/2000/01/rdf-schema#>
+Meaning: This provides the vocabulary to structure data—basically defining what "Classes" (categories) and "Properties" (attributes) exist.
+In your file:
+rdfs:Class: Defines a category (e.g., "Emotion" is a Class).
+rdfs:label: A human-readable name for something (e.g., "ආඩම්බර").
+rdfs:domain & rdfs:range: Rules for properties (e.g., seo:hasEmotion connects a Word to an Emotion).
+
+3. seo (Sinhala Emotion Ontology)
+Full URI: <http://www.semanticweb.org/sinhala-emotion-ontology#>
+Meaning: This is a custom prefix created specifically for your project. It is not a global standard like rdf or rdfs.
+In your file:
+seo:Emotion: You are defining a new concept called "Emotion".
+seo:Word: You are defining a new concept called "Word".
+seo:hasEmotion: That specific relationship linking a Sinhala word to its emotion.
+

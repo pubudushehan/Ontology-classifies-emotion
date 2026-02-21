@@ -44,7 +44,6 @@ class EmotionClassifier:
 
     def tokenize(self, text):
         return indic_tokenize.trivial_tokenize(text)
-
         return emotion_counts, matched_words_dict
 
     def classify_ontology(self, text):
