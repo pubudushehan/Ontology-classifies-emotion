@@ -1,853 +1,1519 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix seo: <http://www.semanticweb.org/sinhala-emotion-ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+seo:Diminisher a rdfs:Class .
+
+seo:DiscourseConnective a rdfs:Class .
 
 seo:Emotion a rdfs:Class .
 
-seo:Word a rdfs:Class .
+seo:EmotionFrame a rdfs:Class .
 
-seo:hasEmotion a rdf:Property ;
-    rdfs:domain seo:Word ;
+seo:Intensifier a rdfs:Class .
+
+seo:LexicalTrigger a rdfs:Class .
+
+seo:NegationMarker a rdfs:Class .
+
+seo:dc_1833967756461024560 a seo:DiscourseConnective ;
+    rdfs:label "වුණත්"@si ;
+    seo:hasEffect "contrastive"^^xsd:string .
+
+seo:dc_3242306182514454245 a seo:DiscourseConnective ;
+    rdfs:label "හේතුවෙන්"@si ;
+    seo:hasEffect "causal"^^xsd:string .
+
+seo:dc_3390877858002894012 a seo:DiscourseConnective ;
+    rdfs:label "නමුත්"@si ;
+    seo:hasEffect "contrastive"^^xsd:string .
+
+seo:dc_4144842854763198338 a seo:DiscourseConnective ;
+    rdfs:label "ඊට අමතරව"@si ;
+    seo:hasEffect "additive"^^xsd:string .
+
+seo:dc_4526349004052356906 a seo:DiscourseConnective ;
+    rdfs:label "නිසා"@si ;
+    seo:hasEffect "causal"^^xsd:string .
+
+seo:dc_500696708651251138 a seo:DiscourseConnective ;
+    rdfs:label "නිසාම"@si ;
+    seo:hasEffect "causal"^^xsd:string .
+
+seo:dc_530111121363816394 a seo:DiscourseConnective ;
+    rdfs:label "ඒ වගේම"@si ;
+    seo:hasEffect "additive"^^xsd:string .
+
+seo:dc_5501582059091022499 a seo:DiscourseConnective ;
+    rdfs:label "හැබැයි"@si ;
+    seo:hasEffect "contrastive"^^xsd:string .
+
+seo:dc_6252020026328492700 a seo:DiscourseConnective ;
+    rdfs:label "ඒත්"@si ;
+    seo:hasEffect "contrastive"^^xsd:string .
+
+seo:dc_6827176203838637469 a seo:DiscourseConnective ;
+    rdfs:label "හින්දා"@si ;
+    seo:hasEffect "causal"^^xsd:string .
+
+seo:dc_7170396092761846673 a seo:DiscourseConnective ;
+    rdfs:label "ඒත් එකක්ම"@si ;
+    seo:hasEffect "additive"^^xsd:string .
+
+seo:dc_8160317039039817107 a seo:DiscourseConnective ;
+    rdfs:label "උනාට"@si ;
+    seo:hasEffect "contrastive"^^xsd:string .
+
+seo:dim_1343616288416062990 a seo:Diminisher ;
+    rdfs:label "ටිකක්"@si ;
+    seo:hasEffect "reduce_confidence"^^xsd:string .
+
+seo:dim_3832621891692717620 a seo:Diminisher ;
+    rdfs:label "ටිකට"@si ;
+    seo:hasEffect "reduce_confidence"^^xsd:string .
+
+seo:dim_5069596909824841346 a seo:Diminisher ;
+    rdfs:label "අඩුවෙන්"@si ;
+    seo:hasEffect "reduce_confidence"^^xsd:string .
+
+seo:dim_6665001971473598508 a seo:Diminisher ;
+    rdfs:label "පොඩි"@si ;
+    seo:hasEffect "reduce_confidence"^^xsd:string .
+
+seo:dim_8338122037614706313 a seo:Diminisher ;
+    rdfs:label "පොඩ්ඩක්"@si ;
+    seo:hasEffect "reduce_confidence"^^xsd:string .
+
+seo:hasAgentEmotion a rdf:Property ;
+    rdfs:domain seo:EmotionFrame ;
     rdfs:range seo:Emotion .
 
-seo:word_-1018463093350761524 a seo:Word ;
-    rdfs:label "ආඩම්බර"@si ;
-    seo:hasEmotion seo:Happy .
+seo:hasEffect a rdf:Property .
 
-seo:word_-1129236076548215260 a seo:Word ;
-    rdfs:label "දිලිසෙන"@si ;
-    seo:hasEmotion seo:Happy .
+seo:hasIntensityLevel a rdf:Property .
 
-seo:word_-1136519603660387674 a seo:Word ;
-    rdfs:label "හිස්තැන"@si ;
-    seo:hasEmotion seo:Sad .
+seo:hasNegatedEmotion a rdf:Property ;
+    rdfs:domain seo:EmotionFrame ;
+    rdfs:range seo:Emotion .
 
-seo:word_-1226738987580310464 a seo:Word ;
-    rdfs:label "අලුත්"@si ;
-    seo:hasEmotion seo:Happy .
+seo:hasPatientEmotion a rdf:Property ;
+    rdfs:domain seo:EmotionFrame ;
+    rdfs:range seo:Emotion .
 
-seo:word_-1273779081463005931 a seo:Word ;
-    rdfs:label "සුවපහසු"@si ;
-    seo:hasEmotion seo:Happy .
+seo:hasPolarity a rdf:Property .
 
-seo:word_-1354015987336012569 a seo:Word ;
-    rdfs:label "සුපිරි"@si ;
-    seo:hasEmotion seo:Happy .
+seo:hasTypicalEmotion a rdf:Property ;
+    rdfs:domain seo:EmotionFrame ;
+    rdfs:range seo:Emotion .
 
-seo:word_-1360970141281410433 a seo:Word ;
-    rdfs:label "දරාගන්න"@si ;
-    seo:hasEmotion seo:Sad .
+seo:hasWeight a rdf:Property .
 
-seo:word_-1381742060851103211 a seo:Word ;
-    rdfs:label "වේදනාවක්"@si ;
-    seo:hasEmotion seo:Sad .
+seo:int_1596071393838840488 a seo:Intensifier ;
+    rdfs:label "අතිශයින්"@si ;
+    seo:hasIntensityLevel "high"^^xsd:string .
 
-seo:word_-1457540041886359422 a seo:Word ;
-    rdfs:label "හම"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-1650014487690020706 a seo:Word ;
-    rdfs:label "සම්පූර්ණ"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-1668279001550909835 a seo:Word ;
-    rdfs:label "රිදුම"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-1927511117910997592 a seo:Word ;
-    rdfs:label "හදවතේ"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-1953294635772144007 a seo:Word ;
-    rdfs:label "උඹව"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-2012925034770885181 a seo:Word ;
-    rdfs:label "දිනාගත්තා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-2039668821521994543 a seo:Word ;
-    rdfs:label "රූටනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-2129086834729367879 a seo:Word ;
-    rdfs:label "අහිමි"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-2178105301351414359 a seo:Word ;
-    rdfs:label "ෂෝක්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-2209787501653304673 a seo:Word ;
-    rdfs:label "සාමය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-2217452943990230679 a seo:Word ;
-    rdfs:label "තොට"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-2230545822993440162 a seo:Word ;
-    rdfs:label "පිච්චෙනවා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-2233324249949021057 a seo:Word ;
-    rdfs:label "රිදෙනවා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-2381230820290303404 a seo:Word ;
-    rdfs:label "ආසයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-2444617944565896138 a seo:Word ;
-    rdfs:label "පරාජය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-2519403403860876297 a seo:Word ;
-    rdfs:label "පසුතැවිල්ල"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-2757980441321505760 a seo:Word ;
-    rdfs:label "ගහනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-2803533965965813243 a seo:Word ;
-    rdfs:label "පශ්චාත්තාපය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-2900426355701146361 a seo:Word ;
-    rdfs:label "නින්දිත"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-295444356654627293 a seo:Word ;
-    rdfs:label "හිඟන්නා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3090675852580848690 a seo:Word ;
-    rdfs:label "එළියට"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3218926240430411616 a seo:Word ;
-    rdfs:label "පරණ"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-3414454080136016121 a seo:Word ;
-    rdfs:label "හීන"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-3501003254149105750 a seo:Word ;
-    rdfs:label "බලාපොරොත්තු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-3612020970038232841 a seo:Word ;
-    rdfs:label "තමුසෙ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3705818680441065017 a seo:Word ;
-    rdfs:label "පාරේ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3730311623080715989 a seo:Word ;
-    rdfs:label "එලවනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3800122285385733304 a seo:Word ;
-    rdfs:label "සංවේදී"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-3933677428707111626 a seo:Word ;
-    rdfs:label "මරනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3977978783662955229 a seo:Word ;
-    rdfs:label "තිරිසනා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-3999396935316555617 a seo:Word ;
-    rdfs:label "යකෝ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-4009612235468916007 a seo:Word ;
-    rdfs:label "නිදහස්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-4019665732471904300 a seo:Word ;
-    rdfs:label "උඹ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-4021293009661024110 a seo:Word ;
-    rdfs:label "පුදුමයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-4064757248120278283 a seo:Word ;
-    rdfs:label "මිනී"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-4082512478082292164 a seo:Word ;
-    rdfs:label "ආතල්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-409977155950131147 a seo:Word ;
-    rdfs:label "දුකක්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-4143475589063025695 a seo:Word ;
-    rdfs:label "කඩනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-418591823714158545 a seo:Word ;
-    rdfs:label "ඉලක්කය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-4299020507136629140 a seo:Word ;
-    rdfs:label "ප්‍රියතම"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-4338654015825032668 a seo:Word ;
-    rdfs:label "අගනා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-4497782441085864172 a seo:Word ;
-    rdfs:label "වෙස්සාවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-4577458619610018263 a seo:Word ;
-    rdfs:label "මියගිය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-4673932558393386332 a seo:Word ;
-    rdfs:label "කැඩුණු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-4678125592115741357 a seo:Word ;
-    rdfs:label "කාලකණ්ණියා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-4737221738746070732 a seo:Word ;
-    rdfs:label "හුදකලා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-4742059112785837641 a seo:Word ;
-    rdfs:label "බලු"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-4891873260433087822 a seo:Word ;
-    rdfs:label "දාලා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-4909546709858635773 a seo:Word ;
-    rdfs:label "අකාලයේ"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-4925803333094704348 a seo:Word ;
-    rdfs:label "ජීවත්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-501503848547246234 a seo:Word ;
-    rdfs:label "තොපි"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5060262949631683153 a seo:Word ;
-    rdfs:label "සතුටුයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-5084025059526277422 a seo:Word ;
-    rdfs:label "ජය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-5090278246752605391 a seo:Word ;
-    rdfs:label "මැරුණා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-5172433949830457880 a seo:Word ;
-    rdfs:label "කම්පාව"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-5255481045933046693 a seo:Word ;
-    rdfs:label "ශෝකය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-5430613859672029611 a seo:Word ;
-    rdfs:label "අවාසනාවන්ත"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-5440567064342177784 a seo:Word ;
-    rdfs:label "නවත්තගනින්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5588734103697404440 a seo:Word ;
-    rdfs:label "අමන"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-56124057821422412 a seo:Word ;
-    rdfs:label "තුච්ඡ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5647215016632324591 a seo:Word ;
-    rdfs:label "පහත්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5659748324507463464 a seo:Word ;
-    rdfs:label "අතෑරලා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-5696341026190023731 a seo:Word ;
-    rdfs:label "උගුල්ලනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-57073095433720428 a seo:Word ;
-    rdfs:label "කකුල්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5752387212684804048 a seo:Word ;
-    rdfs:label "වටිනවා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-5752567656681408974 a seo:Word ;
-    rdfs:label "ඇඟට"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5888868441259295451 a seo:Word ;
-    rdfs:label "වෙහෙස"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-5916047447564311126 a seo:Word ;
-    rdfs:label "සහතික"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-5922257442376069214 a seo:Word ;
-    rdfs:label "අවජාතක"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-5999853632791177361 a seo:Word ;
-    rdfs:label "සාපයක්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-6218733237938759315 a seo:Word ;
-    rdfs:label "පුළුවන්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-6410095274103578066 a seo:Word ;
-    rdfs:label "දුක්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-6424780448101612661 a seo:Word ;
-    rdfs:label "තෝ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-6436633944712225838 a seo:Word ;
-    rdfs:label "නිවන"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-6469630652323537575 a seo:Word ;
-    rdfs:label "ඉපදුණේ"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-6502612641299583924 a seo:Word ;
-    rdfs:label "කට"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-6554585133834079252 a seo:Word ;
-    rdfs:label "මූසලයා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-659049402541234635 a seo:Word ;
-    rdfs:label "අසරණයි"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-6629821214581982765 a seo:Word ;
-    rdfs:label "විශ්වාසයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-6920323838757011750 a seo:Word ;
-    rdfs:label "පොලිසියට"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-7002498217219453042 a seo:Word ;
-    rdfs:label "තනිකම"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-7031694035346669020 a seo:Word ;
-    rdfs:label "මාරම"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7047586644444969874 a seo:Word ;
-    rdfs:label "දවසම"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7047604988495765505 a seo:Word ;
-    rdfs:label "සැහැල්ලුව"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7127945437587636544 a seo:Word ;
-    rdfs:label "ගැම්ම"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7174882524247285640 a seo:Word ;
-    rdfs:label "නියමයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7271026185895621159 a seo:Word ;
-    rdfs:label "එළකිරි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-734645684096082911 a seo:Word ;
-    rdfs:label "පිං"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7442859609745264490 a seo:Word ;
-    rdfs:label "ගතියක්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7477363207159946057 a seo:Word ;
-    rdfs:label "මුකුත්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-7578882440046144815 a seo:Word ;
-    rdfs:label "තොගෙ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-7579313267236988424 a seo:Word ;
-    rdfs:label "වදයක්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-7832273164017908284 a seo:Word ;
-    rdfs:label "දක්ෂ"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-7839624068999907204 a seo:Word ;
-    rdfs:label "ප්‍රබෝධය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-8251687066457350050 a seo:Word ;
-    rdfs:label "කරුමය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-8354648611157689598 a seo:Word ;
-    rdfs:label "මූසල"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-8363031919551210070 a seo:Word ;
-    rdfs:label "ජයග්‍රහණය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-8390968533670387429 a seo:Word ;
-    rdfs:label "කෑවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-8407039511333836442 a seo:Word ;
-    rdfs:label "අමාරුයි"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-8527972810788809216 a seo:Word ;
-    rdfs:label "ඇඬෙනවා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-8579488592837047779 a seo:Word ;
-    rdfs:label "අතීතය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_-8638357801903176144 a seo:Word ;
-    rdfs:label "දත්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-8672216734918138350 a seo:Word ;
-    rdfs:label "ලැබුණා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-8678473617510969954 a seo:Word ;
-    rdfs:label "නරක"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-869273130503958011 a seo:Word ;
-    rdfs:label "ගැම්මක්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-8775306954148160826 a seo:Word ;
-    rdfs:label "හිකනලා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-8798224888064845699 a seo:Word ;
-    rdfs:label "බැහැපන්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_-8825358928957089901 a seo:Word ;
-    rdfs:label "සුභ"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-882613685514412302 a seo:Word ;
-    rdfs:label "දිනුම්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_-8924083651111546808 a seo:Word ;
-    rdfs:label "වසල"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_103486576966911000 a seo:Word ;
-    rdfs:label "පලයන්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_1205538528536423878 a seo:Word ;
-    rdfs:label "අඬන්න"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_1263880894646885250 a seo:Word ;
-    rdfs:label "ප්‍රීතිමත්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_1280805915601837125 a seo:Word ;
-    rdfs:label "පාළුව"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_1321759378017706101 a seo:Word ;
-    rdfs:label "ෂා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_1385916417633977361 a seo:Word ;
-    rdfs:label "තනි"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_1511789568627045541 a seo:Word ;
-    rdfs:label "නවත්තපන්"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_1523500248322097880 a seo:Word ;
-    rdfs:label "වමනෙට"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_1833952006059543487 a seo:Word ;
-    rdfs:label "අසරණ"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_1896110689838280216 a seo:Word ;
-    rdfs:label "ඉරනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_1915886997559222752 a seo:Word ;
-    rdfs:label "කඳුළු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2074603009521640423 a seo:Word ;
-    rdfs:label "අසනීප"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2162129532093848624 a seo:Word ;
-    rdfs:label "නැවුම්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_2210457267456084195 a seo:Word ;
-    rdfs:label "සැප"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_2305670665495277256 a seo:Word ;
-    rdfs:label "විනෝද"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_2325777891824246618 a seo:Word ;
-    rdfs:label "හමගහනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_2380811273841689007 a seo:Word ;
-    rdfs:label "මතකයක්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2527484378939349608 a seo:Word ;
-    rdfs:label "කළකිරීමක්"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2560687049990933379 a seo:Word ;
-    rdfs:label "නොලැබුණු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2742313563624641965 a seo:Word ;
-    rdfs:label "කුණු"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_2756240986962514906 a seo:Word ;
-    rdfs:label "පාළුයි"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2823483988159475241 a seo:Word ;
-    rdfs:label "කම්පනය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2852707775535244221 a seo:Word ;
-    rdfs:label "සමරනවා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_2866218829846707868 a seo:Word ;
-    rdfs:label "ගින්දර"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_2901355512636363648 a seo:Word ;
-    rdfs:label "වෙන්වුණු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_3038383376099038106 a seo:Word ;
-    rdfs:label "බය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_3050330426796586594 a seo:Word ;
-    rdfs:label "සද්දෙ"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_3106768767584491745 a seo:Word ;
-    rdfs:label "ඉකි"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_3111254929583631247 a seo:Word ;
-    rdfs:label "පරට්ටා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_312605282935620820 a seo:Word ;
-    rdfs:label "තිරිසන්නු"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_328742124834420986 a seo:Word ;
-    rdfs:label "මිහිරි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_3354760599402853913 a seo:Word ;
-    rdfs:label "බල්ලා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_3479983572766692809 a seo:Word ;
-    rdfs:label "ලස්සනයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_374559060139780583 a seo:Word ;
-    rdfs:label "වාසනාව"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_3821055378469495640 a seo:Word ;
-    rdfs:label "ගිලෙනවා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_3821941375240727088 a seo:Word ;
-    rdfs:label "මරණය"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_3843979589872005137 a seo:Word ;
-    rdfs:label "කොටනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_3889299823010899013 a seo:Word ;
-    rdfs:label "සහනයක්"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_3902939698511295166 a seo:Word ;
-    rdfs:label "අපහාස"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_4010873416098529841 a seo:Word ;
-    rdfs:label "හෙන"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_4331550302715621874 a seo:Word ;
-    rdfs:label "අමතක"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_4367686611705112045 a seo:Word ;
-    rdfs:label "බිඳුණු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_4666878402990813664 a seo:Word ;
-    rdfs:label "පිස්සුද"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_471971134841336550 a seo:Word ;
-    rdfs:label "ප්‍රීතිය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_5048491198902163326 a seo:Word ;
-    rdfs:label "හිනාව"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_5267702652177602789 a seo:Word ;
-    rdfs:label "පෑදිලා"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_5576837759900807919 a seo:Word ;
-    rdfs:label "අඳුරු"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_5662639941875335536 a seo:Word ;
-    rdfs:label "තෘප්තිය"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_567126326664195372 a seo:Word ;
-    rdfs:label "තෑග්ග"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_5769528925712748164 a seo:Word ;
-    rdfs:label "සාර්ථකයි"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_5857478291566408031 a seo:Word ;
-    rdfs:label "තම්බනවා"@si ;
-    seo:hasEmotion seo:Angry .
-
-seo:word_5870490050563463531 a seo:Word ;
-    rdfs:label "කැඩුණා"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_6090299537706763092 a seo:Word ;
-    rdfs:label "වැරැද්ද"@si ;
-    seo:hasEmotion seo:Sad .
-
-seo:word_6098889187435302673 a seo:Word ;
-    rdfs:label "මරු"@si ;
-    seo:hasEmotion seo:Happy .
-
-seo:word_6115350935889507660 a seo:Word ;
+seo:int_1648323890384167782 a seo:Intensifier ;
     rdfs:label "පට්ට"@si ;
-    seo:hasEmotion seo:Happy .
+    seo:hasIntensityLevel "medium"^^xsd:string .
 
-seo:word_6116968775099935544 a seo:Word ;
-    rdfs:label "වේදනාව"@si ;
-    seo:hasEmotion seo:Sad .
+seo:int_2628303962200145933 a seo:Intensifier ;
+    rdfs:label "හරිම"@si ;
+    seo:hasIntensityLevel "high"^^xsd:string .
 
-seo:word_6130800861155328905 a seo:Word ;
-    rdfs:label "ගොනා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:int_3382498098234452868 a seo:Intensifier ;
+    rdfs:label "මාරම"@si ;
+    seo:hasIntensityLevel "high"^^xsd:string .
 
-seo:word_6311779918610491767 a seo:Word ;
-    rdfs:label "යකා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:int_4663752143612771013 a seo:Intensifier ;
+    rdfs:label "මහ"@si ;
+    seo:hasIntensityLevel "medium"^^xsd:string .
 
-seo:word_6412904682145812039 a seo:Word ;
-    rdfs:label "හීනේ"@si ;
-    seo:hasEmotion seo:Happy .
+seo:int_6465926541061135045 a seo:Intensifier ;
+    rdfs:label "ගොඩක්"@si ;
+    seo:hasIntensityLevel "high"^^xsd:string .
 
-seo:word_6421518271493543012 a seo:Word ;
-    rdfs:label "සුන්"@si ;
-    seo:hasEmotion seo:Sad .
+seo:int_7557982469394718777 a seo:Intensifier ;
+    rdfs:label "ඕනවට වඩා"@si ;
+    seo:hasIntensityLevel "medium"^^xsd:string .
 
-seo:word_6454575462096448362 a seo:Word ;
-    rdfs:label "ඉහළම"@si ;
-    seo:hasEmotion seo:Happy .
+seo:int_772056724976382896 a seo:Intensifier ;
+    rdfs:label "හැබැයිම"@si ;
+    seo:hasIntensityLevel "medium"^^xsd:string .
 
-seo:word_664662930212876058 a seo:Word ;
-    rdfs:label "මෙච්චර"@si ;
-    seo:hasEmotion seo:Sad .
+seo:int_8125921240396467495 a seo:Intensifier ;
+    rdfs:label "මාර"@si ;
+    seo:hasIntensityLevel "high"^^xsd:string .
 
-seo:word_6751841655940281592 a seo:Word ;
-    rdfs:label "පරට්ට"@si ;
-    seo:hasEmotion seo:Angry .
+seo:int_8205460946206303818 a seo:Intensifier ;
+    rdfs:label "ගොඩ"@si ;
+    seo:hasIntensityLevel "medium"^^xsd:string .
 
-seo:word_6804534794403469767 a seo:Word ;
-    rdfs:label "අභිමානය"@si ;
-    seo:hasEmotion seo:Happy .
+seo:int_904945596330449743 a seo:Intensifier ;
+    rdfs:label "ඉතාම"@si ;
+    seo:hasIntensityLevel "high"^^xsd:string .
 
-seo:word_686266774034713888 a seo:Word ;
-    rdfs:label "පරයා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:neg_1260785044130689138 a seo:NegationMarker ;
+    rdfs:label "නැත්තේ"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_6865660874069634459 a seo:Word ;
-    rdfs:label "නරියා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:neg_2635076590069644175 a seo:NegationMarker ;
+    rdfs:label "එපා"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_6876147247224165519 a seo:Word ;
-    rdfs:label "විඳවනවා"@si ;
-    seo:hasEmotion seo:Sad .
+seo:neg_3368618095585895959 a seo:NegationMarker ;
+    rdfs:label "නැතුව"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7081068788549671733 a seo:Word ;
-    rdfs:label "අඳුර"@si ;
-    seo:hasEmotion seo:Sad .
+seo:neg_3785816880327182717 a seo:NegationMarker ;
+    rdfs:label "නොවේ"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7090492788303199262 a seo:Word ;
-    rdfs:label "වැටෙන"@si ;
-    seo:hasEmotion seo:Sad .
+seo:neg_4669871375307273614 a seo:NegationMarker ;
+    rdfs:label "නැති"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7102837221386321956 a seo:Word ;
-    rdfs:label "සමෘද්ධිමත්"@si ;
-    seo:hasEmotion seo:Happy .
+seo:neg_5475755884962316323 a seo:NegationMarker ;
+    rdfs:label "නෙවෙයි"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7123999746283813148 a seo:Word ;
-    rdfs:label "ප්‍රබෝධමත්"@si ;
-    seo:hasEmotion seo:Happy .
+seo:neg_5930912343120024932 a seo:NegationMarker ;
+    rdfs:label "බෑ"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7315989185154077957 a seo:Word ;
-    rdfs:label "සුපිරියට"@si ;
-    seo:hasEmotion seo:Happy .
+seo:neg_6025042018552807417 a seo:NegationMarker ;
+    rdfs:label "නො"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_741195193982527584 a seo:Word ;
-    rdfs:label "ඉවසන්න"@si ;
-    seo:hasEmotion seo:Sad .
+seo:neg_6090658557915090398 a seo:NegationMarker ;
+    rdfs:label "බැහැ"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7418641752881842011 a seo:Word ;
-    rdfs:label "කපනවා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:neg_6105783091688958873 a seo:NegationMarker ;
+    rdfs:label "නැහැ"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
 
-seo:word_7718218146044918420 a seo:Word ;
+seo:neg_8013618877090514861 a seo:NegationMarker ;
+    rdfs:label "නැත"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
+
+seo:neg_9048546177339998511 a seo:NegationMarker ;
+    rdfs:label "නෑ"@si ;
+    seo:hasEffect "flip_polarity"^^xsd:string .
+
+seo:triggersFrame a rdf:Property ;
+    rdfs:domain seo:LexicalTrigger ;
+    rdfs:range seo:EmotionFrame .
+
+seo:word_1004764225438849172 a seo:LexicalTrigger ;
+    rdfs:label "අසරණයි"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_1016144415403820724 a seo:LexicalTrigger ;
+    rdfs:label "බයක්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_1057113510537145562 a seo:LexicalTrigger ;
+    rdfs:label "තේරෙනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_1116124411561086276 a seo:LexicalTrigger ;
+    rdfs:label "මෙතනින්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_1119045795115623407 a seo:LexicalTrigger ;
+    rdfs:label "එකෙන්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_1171835744698568166 a seo:LexicalTrigger ;
+    rdfs:label "වෙලාවක"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_1206397309258534322 a seo:LexicalTrigger ;
+    rdfs:label "දේට"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_121220989964010937 a seo:LexicalTrigger ;
+    rdfs:label "දෙකෙන්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_1239068731914954153 a seo:LexicalTrigger ;
+    rdfs:label "සද්දෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_125312929483411676 a seo:LexicalTrigger ;
+    rdfs:label "අවුරුදු"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_1278753180927652163 a seo:LexicalTrigger ;
+    rdfs:label "අන්තිම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_1284027821908922110 a seo:LexicalTrigger ;
+    rdfs:label "හිස්තැනක්"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_1298835932174639700 a seo:LexicalTrigger ;
+    rdfs:label "ලෝකෙටම"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_1335961032873551440 a seo:LexicalTrigger ;
+    rdfs:label "කාටවත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_1354392749451109618 a seo:LexicalTrigger ;
+    rdfs:label "කියලද"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_138096448442485093 a seo:LexicalTrigger ;
+    rdfs:label "සෙට්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_1397700163425831180 a seo:LexicalTrigger ;
+    rdfs:label "හිනාව"@si ;
+    seo:triggersFrame seo:frame_PositiveEmotion .
+
+seo:word_1420106961809234583 a seo:LexicalTrigger ;
+    rdfs:label "පාලු"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_151716490744125697 a seo:LexicalTrigger ;
+    rdfs:label "එකක්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_1605545812445943199 a seo:LexicalTrigger ;
+    rdfs:label "විදිහට"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_163070338984577912 a seo:LexicalTrigger ;
+    rdfs:label "වැඩක්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_1638858353522520529 a seo:LexicalTrigger ;
+    rdfs:label "යද්දි"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_164559090702106301 a seo:LexicalTrigger ;
+    rdfs:label "කකුල්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_1758852038061753560 a seo:LexicalTrigger ;
+    rdfs:label "දුන්නා"@si ;
+    seo:triggersFrame seo:frame_Achievement .
+
+seo:word_1831374921839543404 a seo:LexicalTrigger ;
+    rdfs:label "බරක්"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_1851139403352679996 a seo:LexicalTrigger ;
+    rdfs:label "කාඩ්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_1875790879998164745 a seo:LexicalTrigger ;
+    rdfs:label "හොඳට"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_1890270174008070549 a seo:LexicalTrigger ;
     rdfs:label "වරෙන්"@si ;
-    seo:hasEmotion seo:Angry .
+    seo:triggersFrame seo:frame_ThreatAction .
 
-seo:word_790948023941044592 a seo:Word ;
-    rdfs:label "ජයවේවා"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_1913707680163592795 a seo:LexicalTrigger ;
+    rdfs:label "ගමේ"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
 
-seo:word_7999249120931422439 a seo:Word ;
-    rdfs:label "චණ්ඩියා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:word_1975611554341681820 a seo:LexicalTrigger ;
+    rdfs:label "කුණු"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
 
-seo:word_8030963178418694347 a seo:Word ;
-    rdfs:label "හම්බුණා"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_1979646071219993330 a seo:LexicalTrigger ;
+    rdfs:label "වටිනවා"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
 
-seo:word_819551911778603036 a seo:Word ;
-    rdfs:label "බිරුම්"@si ;
-    seo:hasEmotion seo:Angry .
+seo:word_1992760088317340012 a seo:LexicalTrigger ;
+    rdfs:label "කාලකණ්ණියෙක්"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
 
-seo:word_8397859888039518650 a seo:Word ;
-    rdfs:label "ස්තූතියි"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_2081420480138469240 a seo:LexicalTrigger ;
+    rdfs:label "ලැබුණ"@si ;
+    seo:triggersFrame seo:frame_Achievement .
 
-seo:word_8530179939948789394 a seo:Word ;
+seo:word_2089507887487894006 a seo:LexicalTrigger ;
+    rdfs:label "හෙන"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_2190446026534430418 a seo:LexicalTrigger ;
+    rdfs:label "මනුස්සයෙක්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2231719715868275582 a seo:LexicalTrigger ;
+    rdfs:label "පවුලේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2251622194489756129 a seo:LexicalTrigger ;
+    rdfs:label "happy"@si ;
+    seo:triggersFrame seo:frame_PositiveEmotion .
+
+seo:word_2264439443508436407 a seo:LexicalTrigger ;
+    rdfs:label "හුදකලා"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_2273313168331268903 a seo:LexicalTrigger ;
+    rdfs:label "එකම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2275143050033488292 a seo:LexicalTrigger ;
+    rdfs:label "රත්තරන්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_2288064707419867020 a seo:LexicalTrigger ;
+    rdfs:label "අහස"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_2372436675940176866 a seo:LexicalTrigger ;
+    rdfs:label "තාත්තව"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2395679627488909459 a seo:LexicalTrigger ;
+    rdfs:label "පිස්සු"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_2414305180593952267 a seo:LexicalTrigger ;
+    rdfs:label "සවුත්තු"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:word_2476768418984197836 a seo:LexicalTrigger ;
+    rdfs:label "යවනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_2478602038028548161 a seo:LexicalTrigger ;
+    rdfs:label "පවුල"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_2489774838961272901 a seo:LexicalTrigger ;
+    rdfs:label "වැස්සේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2499724184052187484 a seo:LexicalTrigger ;
+    rdfs:label "ඉන්නකොට"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2577725722654196370 a seo:LexicalTrigger ;
+    rdfs:label "හීන"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_2590671990484605775 a seo:LexicalTrigger ;
+    rdfs:label "කියන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_271192492575524561 a seo:LexicalTrigger ;
+    rdfs:label "ගල්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2760688727964308943 a seo:LexicalTrigger ;
+    rdfs:label "සින්දු"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_2815385148383616994 a seo:LexicalTrigger ;
+    rdfs:label "වැඩේ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_2848041343608693095 a seo:LexicalTrigger ;
+    rdfs:label "යයි"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2866313170806025483 a seo:LexicalTrigger ;
+    rdfs:label "හිතුවද"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_2867737186038121463 a seo:LexicalTrigger ;
+    rdfs:label "පලයන්"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_2869271992981477969 a seo:LexicalTrigger ;
+    rdfs:label "අවුරුද්දට"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_2888166921238685250 a seo:LexicalTrigger ;
+    rdfs:label "වලින්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2963667221735277476 a seo:LexicalTrigger ;
+    rdfs:label "ඉපදුණේ"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_2992587992453503246 a seo:LexicalTrigger ;
+    rdfs:label "තවත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_2999056764808304941 a seo:LexicalTrigger ;
+    rdfs:label "පෙන්නන්න"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_3052144593789226010 a seo:LexicalTrigger ;
+    rdfs:label "බලන්න"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_3087659969687299236 a seo:LexicalTrigger ;
+    rdfs:label "දේපල"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_3101689739917013646 a seo:LexicalTrigger ;
+    rdfs:label "ඔෆිස්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_3105349409207792839 a seo:LexicalTrigger ;
+    rdfs:label "ඇවිල්ලා"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_3107496973213465028 a seo:LexicalTrigger ;
+    rdfs:label "හිටපිය"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_3134095207101191140 a seo:LexicalTrigger ;
+    rdfs:label "පපුව"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_3180765656173849880 a seo:LexicalTrigger ;
+    rdfs:label "මතකයක්"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_3200462458478815172 a seo:LexicalTrigger ;
+    rdfs:label "හදවතේ"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_3246705250006498590 a seo:LexicalTrigger ;
+    rdfs:label "අළු"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_3258329157963343372 a seo:LexicalTrigger ;
+    rdfs:label "ආසම"@si ;
+    seo:triggersFrame seo:frame_PositiveEmotion .
+
+seo:word_3279233903107413060 a seo:LexicalTrigger ;
+    rdfs:label "කැඩිච්ච"@si ;
+    seo:triggersFrame seo:frame_Destruction .
+
+seo:word_3337039166441096746 a seo:LexicalTrigger ;
+    rdfs:label "අවාසනාවන්ත"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_3346776623764432427 a seo:LexicalTrigger ;
+    rdfs:label "ගැහුවොත්"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_3384160095631814624 a seo:LexicalTrigger ;
+    rdfs:label "වෙනකොට"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_3428552243747137212 a seo:LexicalTrigger ;
+    rdfs:label "තිබුණු"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_3459915544174408810 a seo:LexicalTrigger ;
+    rdfs:label "වෙලාවට"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_3496510335853125734 a seo:LexicalTrigger ;
+    rdfs:label "පැරදුණා"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_3528233931097749548 a seo:LexicalTrigger ;
+    rdfs:label "කළත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_3613794176227176810 a seo:LexicalTrigger ;
+    rdfs:label "හිතේ"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_361744117376129422 a seo:LexicalTrigger ;
+    rdfs:label "යාලුවෝ"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_3664277121061464581 a seo:LexicalTrigger ;
+    rdfs:label "දැක්කා"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_3685959691221874301 a seo:LexicalTrigger ;
+    rdfs:label "අයිස්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_3740785193300122956 a seo:LexicalTrigger ;
+    rdfs:label "දෙන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_3786149391814782534 a seo:LexicalTrigger ;
+    rdfs:label "ලෝකයම"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_3792957206864709135 a seo:LexicalTrigger ;
+    rdfs:label "හීනයක්ම"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_3861663873816078755 a seo:LexicalTrigger ;
+    rdfs:label "මොහොතකින්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_3870803890339447876 a seo:LexicalTrigger ;
+    rdfs:label "පාළුයි"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_3921313065281660404 a seo:LexicalTrigger ;
+    rdfs:label "ෆිල්ම්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_3956569145806710485 a seo:LexicalTrigger ;
+    rdfs:label "ලෝකේ"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_3988868488297479322 a seo:LexicalTrigger ;
+    rdfs:label "පැටියෙක්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_3995545764128758418 a seo:LexicalTrigger ;
+    rdfs:label "සැහැල්ලුයි"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_3997259989220925870 a seo:LexicalTrigger ;
+    rdfs:label "උගුල්ලනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_4000684091678343629 a seo:LexicalTrigger ;
+    rdfs:label "ලයින්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_4038876495940447670 a seo:LexicalTrigger ;
+    rdfs:label "දානවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_4046492622711325385 a seo:LexicalTrigger ;
+    rdfs:label "ලස්සන"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_4058277655214078801 a seo:LexicalTrigger ;
+    rdfs:label "ඉතිරි"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_4060254964464068628 a seo:LexicalTrigger ;
+    rdfs:label "තේරුමක්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_4077474803117712761 a seo:LexicalTrigger ;
+    rdfs:label "වුණු"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_4121749660281113319 a seo:LexicalTrigger ;
     rdfs:label "පාලුයි"@si ;
-    seo:hasEmotion seo:Sad .
+    seo:triggersFrame seo:frame_SadEmotion .
 
-seo:word_8780213055656242465 a seo:Word ;
-    rdfs:label "කැරියා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:word_4125892370615349034 a seo:LexicalTrigger ;
+    rdfs:label "වෙයන්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
 
-seo:word_8946624078537839626 a seo:Word ;
-    rdfs:label "ගෙම්බා"@si ;
-    seo:hasEmotion seo:Angry .
+seo:word_4169825539645873771 a seo:LexicalTrigger ;
+    rdfs:label "රහයි"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
 
-seo:word_896191692630778096 a seo:Word ;
-    rdfs:label "වාසනාවන්ත"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_4208073736509079900 a seo:LexicalTrigger ;
+    rdfs:label "වේවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
 
-seo:word_9061097742955546042 a seo:Word ;
-    rdfs:label "විනාශය"@si ;
-    seo:hasEmotion seo:Sad .
+seo:word_423851778424123872 a seo:LexicalTrigger ;
+    rdfs:label "නිදහස්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
 
-seo:word_9100495392286331976 a seo:Word ;
-    rdfs:label "ජොලි"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_4271297656337428244 a seo:LexicalTrigger ;
+    rdfs:label "කරයි"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
 
-seo:word_9126577587063349043 a seo:Word ;
-    rdfs:label "සිරාවටම"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_4292853120262396808 a seo:LexicalTrigger ;
+    rdfs:label "මචං"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
 
-seo:word_9138777578758118932 a seo:Word ;
-    rdfs:label "හදවතින්ම"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_430277449995983131 a seo:LexicalTrigger ;
+    rdfs:label "ජීවත්"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
 
-seo:word_9180736183880031123 a seo:Word ;
-    rdfs:label "සැහැල්ලු"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_4424237479119492668 a seo:LexicalTrigger ;
+    rdfs:label "මෙච්චර"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
 
-seo:word_942391575943699200 a seo:Word ;
-    rdfs:label "සිනහව"@si ;
-    seo:hasEmotion seo:Happy .
+seo:word_4459919951977098057 a seo:LexicalTrigger ;
+    rdfs:label "හොඳ"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_4503843786623295277 a seo:LexicalTrigger ;
+    rdfs:label "මල්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_4528683581943050450 a seo:LexicalTrigger ;
+    rdfs:label "ඉන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_4552113567225242764 a seo:LexicalTrigger ;
+    rdfs:label "ලැප්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_4590206725688085833 a seo:LexicalTrigger ;
+    rdfs:label "රිදුම"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_4751128373226847537 a seo:LexicalTrigger ;
+    rdfs:label "බලන්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_4764730240315766794 a seo:LexicalTrigger ;
+    rdfs:label "අතීතය"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_4774479940903455450 a seo:LexicalTrigger ;
+    rdfs:label "කරන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_4781357061218657401 a seo:LexicalTrigger ;
+    rdfs:label "හැදෙනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_488548016053714256 a seo:LexicalTrigger ;
+    rdfs:label "හම්බුණා"@si ;
+    seo:triggersFrame seo:frame_Achievement .
+
+seo:word_4931018361915870223 a seo:LexicalTrigger ;
+    rdfs:label "තිබුණ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_4987568333770748803 a seo:LexicalTrigger ;
+    rdfs:label "මරනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_5020636599517067478 a seo:LexicalTrigger ;
+    rdfs:label "මරු"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_5032672696263886940 a seo:LexicalTrigger ;
+    rdfs:label "පන්නන්න"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_5035199833892601775 a seo:LexicalTrigger ;
+    rdfs:label "දවසම"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5043867969383144841 a seo:LexicalTrigger ;
+    rdfs:label "ෆොටෝ"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_5047163074927709472 a seo:LexicalTrigger ;
+    rdfs:label "යාලුවෙක්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_5067681735222047015 a seo:LexicalTrigger ;
+    rdfs:label "බල්ලෙක්"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:word_5127033272265443522 a seo:LexicalTrigger ;
+    rdfs:label "බස්සනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_5162795510244812513 a seo:LexicalTrigger ;
+    rdfs:label "වුනා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_5177495761306286531 a seo:LexicalTrigger ;
+    rdfs:label "කරගත්තා"@si ;
+    seo:triggersFrame seo:frame_Achievement .
+
+seo:word_5191337182834123016 a seo:LexicalTrigger ;
+    rdfs:label "අදත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5192012171957760242 a seo:LexicalTrigger ;
+    rdfs:label "එකත්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5199629920873150773 a seo:LexicalTrigger ;
+    rdfs:label "පාරේදී"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5217368386439869591 a seo:LexicalTrigger ;
+    rdfs:label "ආසයි"@si ;
+    seo:triggersFrame seo:frame_PositiveEmotion .
+
+seo:word_5219139010843748590 a seo:LexicalTrigger ;
+    rdfs:label "ආදරේ"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_5230456021241368313 a seo:LexicalTrigger ;
+    rdfs:label "කළකිරීමක්"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_5246893535120409924 a seo:LexicalTrigger ;
+    rdfs:label "නඩු"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_5252469337285326237 a seo:LexicalTrigger ;
+    rdfs:label "තැනක්"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_5264772798369462174 a seo:LexicalTrigger ;
+    rdfs:label "පිස්සුවක්ද"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_5269672734530228670 a seo:LexicalTrigger ;
+    rdfs:label "වීඩියෝ"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_5325432242011805106 a seo:LexicalTrigger ;
+    rdfs:label "මෙහෙම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5337234453078836050 a seo:LexicalTrigger ;
+    rdfs:label "විදිහක්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_534519704534661045 a seo:LexicalTrigger ;
+    rdfs:label "කවුරුත්ම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5462241214062028814 a seo:LexicalTrigger ;
+    rdfs:label "උස්සනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_5476420157784669908 a seo:LexicalTrigger ;
+    rdfs:label "නේද"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_5483075055160884207 a seo:LexicalTrigger ;
+    rdfs:label "ඇඟිල්ල"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_5500435111221455312 a seo:LexicalTrigger ;
+    rdfs:label "වෙලාව"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5547673546280230145 a seo:LexicalTrigger ;
+    rdfs:label "ට්‍රිප්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_5552250413410692111 a seo:LexicalTrigger ;
+    rdfs:label "පස්සේ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5624826248797807097 a seo:LexicalTrigger ;
+    rdfs:label "ෆේවරිට්"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_5644098932228765684 a seo:LexicalTrigger ;
+    rdfs:label "කැත"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:word_5704384502207088401 a seo:LexicalTrigger ;
+    rdfs:label "කෙළවරක්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5754307454704795246 a seo:LexicalTrigger ;
+    rdfs:label "හදපු"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5756013364072254781 a seo:LexicalTrigger ;
+    rdfs:label "මගෙන්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5778552644590645226 a seo:LexicalTrigger ;
+    rdfs:label "සතුටු"@si ;
+    seo:triggersFrame seo:frame_PositiveEmotion .
+
+seo:word_5781670536355247991 a seo:LexicalTrigger ;
+    rdfs:label "දකිනකොට"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5804796301475495387 a seo:LexicalTrigger ;
+    rdfs:label "එකට"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5810010150724364018 a seo:LexicalTrigger ;
+    rdfs:label "පාටියක්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_5814683598317006122 a seo:LexicalTrigger ;
+    rdfs:label "ගහලා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_5842421543801961623 a seo:LexicalTrigger ;
+    rdfs:label "කඳුළු"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_5913786082553639882 a seo:LexicalTrigger ;
+    rdfs:label "එකේ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5914628931099646531 a seo:LexicalTrigger ;
+    rdfs:label "කැඩුවා"@si ;
+    seo:triggersFrame seo:frame_Destruction .
+
+seo:word_5933011441243901530 a seo:LexicalTrigger ;
+    rdfs:label "කරන්නේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_5955342744149421721 a seo:LexicalTrigger ;
+    rdfs:label "පටන්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_5965668136485207399 a seo:LexicalTrigger ;
+    rdfs:label "පාට්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6005361319728510335 a seo:LexicalTrigger ;
+    rdfs:label "වෙන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6009300527874176128 a seo:LexicalTrigger ;
+    rdfs:label "ඕනේ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_6066350939539263524 a seo:LexicalTrigger ;
+    rdfs:label "උදේ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_6151897916294456439 a seo:LexicalTrigger ;
+    rdfs:label "රහස්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6153211908417199791 a seo:LexicalTrigger ;
+    rdfs:label "ප්‍රශ්න"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_6155431531943916416 a seo:LexicalTrigger ;
+    rdfs:label "දත්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6245985899903637475 a seo:LexicalTrigger ;
+    rdfs:label "ඉතින්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_6280049303012637835 a seo:LexicalTrigger ;
+    rdfs:label "එන්න"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6305082452437716376 a seo:LexicalTrigger ;
+    rdfs:label "පාරෙදි"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_6352206589439058851 a seo:LexicalTrigger ;
+    rdfs:label "දෙනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6369141522446727598 a seo:LexicalTrigger ;
+    rdfs:label "අනුන්ගේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_6370657560758079447 a seo:LexicalTrigger ;
+    rdfs:label "අලුත්"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_6389363295528305382 a seo:LexicalTrigger ;
+    rdfs:label "සීමාවක්"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_6430285283452618266 a seo:LexicalTrigger ;
+    rdfs:label "දවසේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_6522434861318555472 a seo:LexicalTrigger ;
+    rdfs:label "පාලුව"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_6529740272894569071 a seo:LexicalTrigger ;
+    rdfs:label "අතාරින්නෙ"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_6550994217036108399 a seo:LexicalTrigger ;
+    rdfs:label "හදවත"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_6562726374942295451 a seo:LexicalTrigger ;
+    rdfs:label "ගලවනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_6567803373153507145 a seo:LexicalTrigger ;
+    rdfs:label "දුකක්"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_6603684339231000236 a seo:LexicalTrigger ;
+    rdfs:label "බස්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_6615806068600917110 a seo:LexicalTrigger ;
+    rdfs:label "දුක"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_6644515036275065759 a seo:LexicalTrigger ;
+    rdfs:label "සින්දුව"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_6707281632539907384 a seo:LexicalTrigger ;
+    rdfs:label "ෆුල්"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_6714819081311412746 a seo:LexicalTrigger ;
+    rdfs:label "මරල"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_6716381639593759862 a seo:LexicalTrigger ;
+    rdfs:label "අපරාධ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6745484788998659255 a seo:LexicalTrigger ;
+    rdfs:label "පරයා"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:word_6747969873953021159 a seo:LexicalTrigger ;
+    rdfs:label "ආයෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6748684088352645459 a seo:LexicalTrigger ;
+    rdfs:label "ගහනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_678937288188020187 a seo:LexicalTrigger ;
+    rdfs:label "යකෝ"@si ;
+    seo:triggersFrame seo:frame_HostileExclamation .
+
+seo:word_6790943913876422864 a seo:LexicalTrigger ;
+    rdfs:label "කාලා"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_69193671861105772 a seo:LexicalTrigger ;
+    rdfs:label "දුක්"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_6933220472343718428 a seo:LexicalTrigger ;
+    rdfs:label "මිනිහෙක්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6990699982043734438 a seo:LexicalTrigger ;
+    rdfs:label "වාහනේ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_6995387977052008027 a seo:LexicalTrigger ;
+    rdfs:label "අම්මෝ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_7041884373086495185 a seo:LexicalTrigger ;
+    rdfs:label "ෂුවර්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7048734509780959867 a seo:LexicalTrigger ;
+    rdfs:label "දකින්න"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_7065841224595033256 a seo:LexicalTrigger ;
+    rdfs:label "තනි"@si ;
+    seo:triggersFrame seo:frame_LossExperience .
+
+seo:word_7078364422404065818 a seo:LexicalTrigger ;
+    rdfs:label "බැරි"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_7080204460037133759 a seo:LexicalTrigger ;
+    rdfs:label "විනාශ"@si ;
+    seo:triggersFrame seo:frame_Destruction .
+
+seo:word_7100849428979511113 a seo:LexicalTrigger ;
+    rdfs:label "කපනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_7109229077242325195 a seo:LexicalTrigger ;
+    rdfs:label "ලැජ්ජාවක්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7123810446115918948 a seo:LexicalTrigger ;
+    rdfs:label "මන්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_7144874773650802596 a seo:LexicalTrigger ;
+    rdfs:label "තියා"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_7174266908343645144 a seo:LexicalTrigger ;
+    rdfs:label "දවල්ට"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_7224004297870842254 a seo:LexicalTrigger ;
+    rdfs:label "ෂර්ට්"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_7256425610500391251 a seo:LexicalTrigger ;
+    rdfs:label "කරා"@si ;
+    seo:triggersFrame seo:frame_Achievement .
+
+seo:word_7270367352708945922 a seo:LexicalTrigger ;
+    rdfs:label "වැටෙන"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_733763559435029809 a seo:LexicalTrigger ;
+    rdfs:label "සෙල්ලම්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7358465942106752026 a seo:LexicalTrigger ;
+    rdfs:label "බැලුවා"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_7388972411731041307 a seo:LexicalTrigger ;
+    rdfs:label "කවුරුත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_7395467712479232227 a seo:LexicalTrigger ;
+    rdfs:label "ෆන්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_7423538305398568581 a seo:LexicalTrigger ;
+    rdfs:label "ආවා"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_7448222784687595773 a seo:LexicalTrigger ;
+    rdfs:label "කොත්තු"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_7505107373423635137 a seo:LexicalTrigger ;
+    rdfs:label "අසරණ"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_751257714882331705 a seo:LexicalTrigger ;
+    rdfs:label "කවුද"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7526024104367937883 a seo:LexicalTrigger ;
+    rdfs:label "එන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7555333274695205982 a seo:LexicalTrigger ;
+    rdfs:label "ඒයි"@si ;
+    seo:triggersFrame seo:frame_HostileExclamation .
+
+seo:word_7557605296001671558 a seo:LexicalTrigger ;
+    rdfs:label "හොයාගන්නවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7567456041206048279 a seo:LexicalTrigger ;
+    rdfs:label "පුළුවන්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_7624669038161724196 a seo:LexicalTrigger ;
+    rdfs:label "අහංකාරකම"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:word_7664987720326821487 a seo:LexicalTrigger ;
+    rdfs:label "ලස්සනයි"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_7691937398825778929 a seo:LexicalTrigger ;
+    rdfs:label "දන්නේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_7695030565858139159 a seo:LexicalTrigger ;
+    rdfs:label "වහපිය"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7730608640550214756 a seo:LexicalTrigger ;
+    rdfs:label "නිවන්න"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_7750287330057377372 a seo:LexicalTrigger ;
+    rdfs:label "හිටියේ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_776986790650053497 a seo:LexicalTrigger ;
+    rdfs:label "නම්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_7824175367831857809 a seo:LexicalTrigger ;
+    rdfs:label "දැනගන්"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_7842473843898934151 a seo:LexicalTrigger ;
+    rdfs:label "ගැම්මක්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_7848695618677646022 a seo:LexicalTrigger ;
+    rdfs:label "හුස්ම"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_7891393849395943136 a seo:LexicalTrigger ;
+    rdfs:label "කියන්නේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_792792273550456388 a seo:LexicalTrigger ;
+    rdfs:label "බොරු"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_7963166980421378933 a seo:LexicalTrigger ;
+    rdfs:label "පොලිසියට"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8001093095344862333 a seo:LexicalTrigger ;
+    rdfs:label "වරෙන්කෝ"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_8031236691186292190 a seo:LexicalTrigger ;
+    rdfs:label "සුපිරි"@si ;
+    seo:triggersFrame seo:frame_PositiveQuality .
+
+seo:word_8050726806005810096 a seo:LexicalTrigger ;
+    rdfs:label "පිස්සුද"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_807561495175721369 a seo:LexicalTrigger ;
+    rdfs:label "වෙලාවේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_809455138311898982 a seo:LexicalTrigger ;
+    rdfs:label "අඩෝ"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_815555560915534984 a seo:LexicalTrigger ;
+    rdfs:label "මූණ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8170527533067076036 a seo:LexicalTrigger ;
+    rdfs:label "නවත්තපන්"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_8174169296957872522 a seo:LexicalTrigger ;
+    rdfs:label "නැත්නම්"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8184077581184600107 a seo:LexicalTrigger ;
+    rdfs:label "ආතල්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_8184447463713457977 a seo:LexicalTrigger ;
+    rdfs:label "මුකුත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_819291682106650851 a seo:LexicalTrigger ;
+    rdfs:label "එලවනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8273523154602873313 a seo:LexicalTrigger ;
+    rdfs:label "හිතපු"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_8361866351266576694 a seo:LexicalTrigger ;
+    rdfs:label "හරි"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_8418093605626835178 a seo:LexicalTrigger ;
+    rdfs:label "කඩනවා"@si ;
+    seo:triggersFrame seo:frame_PhysicalHarm .
+
+seo:word_8434948607151292720 a seo:LexicalTrigger ;
+    rdfs:label "ජරා"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:word_8516766008814244609 a seo:LexicalTrigger ;
+    rdfs:label "පල්ලට"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8538453870359018324 a seo:LexicalTrigger ;
+    rdfs:label "වේදනාව"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_8592151903160661915 a seo:LexicalTrigger ;
+    rdfs:label "පේන්නේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8595300675297055233 a seo:LexicalTrigger ;
+    rdfs:label "හැමදාම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8618229991960305213 a seo:LexicalTrigger ;
+    rdfs:label "ලැබෙන්නේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8632714239376839883 a seo:LexicalTrigger ;
+    rdfs:label "රිදෙනවා"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8645873044718710928 a seo:LexicalTrigger ;
+    rdfs:label "හවස"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_867229271342135813 a seo:LexicalTrigger ;
+    rdfs:label "මැච්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_8680544013516462639 a seo:LexicalTrigger ;
+    rdfs:label "ඇතුළේ"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8772193001147608557 a seo:LexicalTrigger ;
+    rdfs:label "ගෑනිට"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8785068919131133692 a seo:LexicalTrigger ;
+    rdfs:label "සතුටුයි"@si ;
+    seo:triggersFrame seo:frame_PositiveEmotion .
+
+seo:word_8789334624399289394 a seo:LexicalTrigger ;
+    rdfs:label "වැටෙනවා"@si ;
+    seo:triggersFrame seo:frame_DespairState .
+
+seo:word_8934717651942978487 a seo:LexicalTrigger ;
+    rdfs:label "දන්නෙ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_8956660087605868737 a seo:LexicalTrigger ;
+    rdfs:label "හැම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8956695158554578857 a seo:LexicalTrigger ;
+    rdfs:label "දෙයි"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_8971818504520735476 a seo:LexicalTrigger ;
+    rdfs:label "දරුණු"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_9060189334089808876 a seo:LexicalTrigger ;
+    rdfs:label "ගන්නවත්"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_9071959365229542284 a seo:LexicalTrigger ;
+    rdfs:label "හොඳටම"@si ;
+    seo:triggersFrame seo:frame_GeneralSadContext .
+
+seo:word_9172381375649941872 a seo:LexicalTrigger ;
+    rdfs:label "ඩාන්ස්"@si ;
+    seo:triggersFrame seo:frame_SocialBonding .
+
+seo:word_917904949052748177 a seo:LexicalTrigger ;
+    rdfs:label "උසුලන්න"@si ;
+    seo:triggersFrame seo:frame_SufferingExperience .
+
+seo:word_9188535218958146471 a seo:LexicalTrigger ;
+    rdfs:label "බලපන්"@si ;
+    seo:triggersFrame seo:frame_ThreatAction .
+
+seo:word_9192019191666059814 a seo:LexicalTrigger ;
+    rdfs:label "ඉස්සරහ"@si ;
+    seo:triggersFrame seo:frame_GeneralAngryContext .
+
+seo:word_9197154034643699202 a seo:LexicalTrigger ;
+    rdfs:label "කෑම"@si ;
+    seo:triggersFrame seo:frame_PleasantExperience .
+
+seo:word_9211535558587997294 a seo:LexicalTrigger ;
+    rdfs:label "දුකෙන්"@si ;
+    seo:triggersFrame seo:frame_SadEmotion .
+
+seo:word_9221735242692159053 a seo:LexicalTrigger ;
+    rdfs:label "දවසක්"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_948664121034913941 a seo:LexicalTrigger ;
+    rdfs:label "තාම"@si ;
+    seo:triggersFrame seo:frame_GeneralHappyContext .
+
+seo:word_95305441156746436 a seo:LexicalTrigger ;
+    rdfs:label "සතුටක්ම"@si ;
+    seo:triggersFrame seo:frame_EmotionalLonging .
+
+seo:word_963595681469161257 a seo:LexicalTrigger ;
+    rdfs:label "ලැබුණා"@si ;
+    seo:triggersFrame seo:frame_Achievement .
+
+seo:word_991684185652637139 a seo:LexicalTrigger ;
+    rdfs:label "ගොනා"@si ;
+    seo:triggersFrame seo:frame_VerbalInsult .
+
+seo:frame_HostileExclamation a seo:EmotionFrame ;
+    rdfs:label "HostileExclamation" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Angry ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Angry ;
+    seo:hasWeight "0.9"^^xsd:float ;
+    rdfs:comment "Hostile expletives and aggressive exclamations used in anger" .
+
+seo:frame_Destruction a seo:EmotionFrame ;
+    rdfs:label "Destruction" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Angry ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Destroying, breaking, or damaging objects or property" .
+
+seo:frame_Achievement a seo:EmotionFrame ;
+    rdfs:label "Achievement" ;
+    seo:hasAgentEmotion seo:Happy ;
+    seo:hasNegatedEmotion seo:Sad ;
+    seo:hasPatientEmotion seo:Happy ;
+    seo:hasPolarity "positive"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Happy ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Accomplishment, success, or receiving something desired" .
+
+seo:frame_PositiveEmotion a seo:EmotionFrame ;
+    rdfs:label "PositiveEmotion" ;
+    seo:hasAgentEmotion seo:Happy ;
+    seo:hasNegatedEmotion seo:Sad ;
+    seo:hasPatientEmotion seo:Happy ;
+    seo:hasPolarity "positive"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Happy ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Direct expressions of positive emotional state (joy, happiness, delight)" .
+
+seo:frame_DespairState a seo:EmotionFrame ;
+    rdfs:label "DespairState" ;
+    seo:hasAgentEmotion seo:Sad ;
+    seo:hasNegatedEmotion seo:Happy ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Sad ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Hopelessness, helplessness, defeat, inability to cope" .
+
+seo:frame_SufferingExperience a seo:EmotionFrame ;
+    rdfs:label "SufferingExperience" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Happy ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Sad ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Physical or emotional pain, suffering, enduring hardship" .
+
+seo:frame_LossExperience a seo:EmotionFrame ;
+    rdfs:label "LossExperience" ;
+    seo:hasAgentEmotion seo:Sad ;
+    seo:hasNegatedEmotion seo:Happy ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Sad ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Loss, separation, loneliness, emptiness, or abandonment" .
+
+seo:frame_SadEmotion a seo:EmotionFrame ;
+    rdfs:label "SadEmotion" ;
+    seo:hasAgentEmotion seo:Sad ;
+    seo:hasNegatedEmotion seo:Happy ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Sad ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Direct expressions of sadness, sorrow, grief, or dejection" .
+
+seo:frame_ThreatAction a seo:EmotionFrame ;
+    rdfs:label "ThreatAction" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Angry ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Threats, aggressive commands, intimidation" .
+
+seo:Neutral a seo:Emotion ;
+    rdfs:label "Neutral" .
+
+seo:frame_VerbalInsult a seo:EmotionFrame ;
+    rdfs:label "VerbalInsult" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Angry ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Derogatory terms, insults, name-calling. Agent feels anger/contempt, patient feels sadness/humiliation" .
+
+seo:frame_PhysicalHarm a seo:EmotionFrame ;
+    rdfs:label "PhysicalHarm" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Angry ;
+    seo:hasWeight "1.0"^^xsd:float ;
+    rdfs:comment "Physical violence: hitting, killing, breaking, cutting. Role-dependent: agent feels anger, patient feels sadness/fear" .
+
+seo:frame_PositiveQuality a seo:EmotionFrame ;
+    rdfs:label "PositiveQuality" ;
+    seo:hasAgentEmotion seo:Happy ;
+    seo:hasNegatedEmotion seo:Sad ;
+    seo:hasPatientEmotion seo:Happy ;
+    seo:hasPolarity "positive"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Happy ;
+    seo:hasWeight "0.9"^^xsd:float ;
+    rdfs:comment "Positive quality assessment or aesthetic appreciation" .
+
+seo:frame_SocialBonding a seo:EmotionFrame ;
+    rdfs:label "SocialBonding" ;
+    seo:hasAgentEmotion seo:Happy ;
+    seo:hasNegatedEmotion seo:Sad ;
+    seo:hasPatientEmotion seo:Happy ;
+    seo:hasPolarity "positive"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Happy ;
+    seo:hasWeight "0.8"^^xsd:float ;
+    rdfs:comment "Social connection, friendship, group activities, fun" .
+
+seo:frame_EmotionalLonging a seo:EmotionFrame ;
+    rdfs:label "EmotionalLonging" ;
+    seo:hasAgentEmotion seo:Sad ;
+    seo:hasNegatedEmotion seo:Happy ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Sad ;
+    seo:hasWeight "0.9"^^xsd:float ;
+    rdfs:comment "Yearning, nostalgia, memory-driven sadness, unrequited love" .
 
 seo:Angry a seo:Emotion ;
     rdfs:label "Angry" .
 
-seo:Sad a seo:Emotion ;
-    rdfs:label "Sad" .
+seo:frame_PleasantExperience a seo:EmotionFrame ;
+    rdfs:label "PleasantExperience" ;
+    seo:hasAgentEmotion seo:Happy ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Happy ;
+    seo:hasPolarity "positive"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Happy ;
+    seo:hasWeight "0.7"^^xsd:float ;
+    rdfs:comment "Enjoyable activities, pleasant things, celebrations, holidays" .
 
 seo:Happy a seo:Emotion ;
     rdfs:label "Happy" .
+
+seo:Sad a seo:Emotion ;
+    rdfs:label "Sad" .
+
+seo:frame_GeneralHappyContext a seo:EmotionFrame ;
+    rdfs:label "GeneralHappyContext" ;
+    seo:hasAgentEmotion seo:Happy ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Happy ;
+    seo:hasPolarity "positive"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Happy ;
+    seo:hasWeight "0.4"^^xsd:float ;
+    rdfs:comment "Contextual words that statistically co-occur with happy expressions (weak signal)" .
+
+seo:frame_GeneralAngryContext a seo:EmotionFrame ;
+    rdfs:label "GeneralAngryContext" ;
+    seo:hasAgentEmotion seo:Angry ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Angry ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Angry ;
+    seo:hasWeight "0.4"^^xsd:float ;
+    rdfs:comment "Contextual words that statistically co-occur with angry expressions (weak signal)" .
+
+seo:frame_GeneralSadContext a seo:EmotionFrame ;
+    rdfs:label "GeneralSadContext" ;
+    seo:hasAgentEmotion seo:Sad ;
+    seo:hasNegatedEmotion seo:Neutral ;
+    seo:hasPatientEmotion seo:Sad ;
+    seo:hasPolarity "negative"^^xsd:string ;
+    seo:hasTypicalEmotion seo:Sad ;
+    seo:hasWeight "0.4"^^xsd:float ;
+    rdfs:comment "Contextual words that statistically co-occur with sad expressions (weak signal)" .
 
