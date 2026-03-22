@@ -1,0 +1,90 @@
+{
+    "agent_markers": {
+        "description": "Nominative case markers indicating the doer/agent of an action",
+        "role": "agent",
+        "groups": {
+            "first_person": {
+                "hostile": false,
+                "words": ["මම", "මං", "අපි"]
+            },
+            "second_person_neutral": {
+                "hostile": false,
+                "words": ["ඔයා", "ඔබ", "ඔබලා"]
+            },
+            "second_person_hostile": {
+                "hostile": true,
+                "words": ["තෝ", "උඹ", "තොපි"]
+            },
+            "third_person": {
+                "hostile": false,
+                "words": ["එයා", "ඌ", "මූ", "මුන්", "එවුන්"]
+            }
+        }
+    },
+    "patient_markers": {
+        "description": "Accusative case markers indicating the receiver/patient of an action",
+        "role": "patient",
+        "groups": {
+            "first_person": {
+                "hostile": false,
+                "words": ["මාව", "මව", "අපව"]
+            },
+            "second_person_neutral": {
+                "hostile": false,
+                "words": ["ඔයාව"]
+            },
+            "second_person_hostile": {
+                "hostile": true,
+                "words": ["තෝව", "උඹව"]
+            },
+            "third_person": {
+                "hostile": false,
+                "words": ["එයාව"]
+            }
+        }
+    },
+    "experiencer_markers": {
+        "description": "Dative case markers indicating the experiencer (to whom something happens/feels)",
+        "role": "experiencer",
+        "groups": {
+            "first_person": {
+                "hostile": false,
+                "words": ["මට", "අපට"]
+            },
+            "second_person_neutral": {
+                "hostile": false,
+                "words": ["ඔයාට", "ඔබට"]
+            },
+            "second_person_hostile": {
+                "hostile": true,
+                "words": ["තොට", "උඹට"]
+            },
+            "third_person": {
+                "hostile": false,
+                "words": ["එයාට", "ඌට", "එවුන්ට"]
+            }
+        }
+    },
+    "possessive_markers": {
+        "description": "Genitive case markers indicating possession",
+        "role": "possessive",
+        "groups": {
+            "first_person": {
+                "hostile": false,
+                "words": ["මගේ", "මගෙ", "මගේම", "අපේ"]
+            },
+            "second_person_neutral": {
+                "hostile": false,
+                "words": ["ඔයාගේ", "ඔබගේ"]
+            },
+            "second_person_hostile": {
+                "hostile": true,
+                "words": ["තොගෙ", "උඹේ", "තොපේ", "මුගේ"]
+            },
+            "third_person": {
+                "hostile": false,
+                "words": ["එයාගේ"]
+            }
+        }
+    }
+}

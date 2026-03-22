@@ -1,25 +1,32 @@
 # Research Evaluation Presentation Slides
 
-## Slide 1: Objective 01 - Ontology Creation for Emotion Detection
+## Slide 1: Objective 01 - Semantic Frame-Based Emotion Ontology
 
-**Title:** Development of the Sinhala Emotion Ontology (SEO)
+**Title:** 3-Tier Semantic Emotion Ontology for Sinhala
 
 **Core Concept:**
-A formal, rule-based framework to represent emotional concepts and their linguistic triggers in Sinhala, built using **OWL (Web Ontology Language)**.
+A **frame-based** RDF/OWL ontology that classifies emotions by **meaning, not keywords** — using semantic roles, negation, intensifiers, and discourse context.
 
 **Key Contributions:**
-*   **Structured Knowledge Base:** Modeled 4 core emotion classes (Happy, Sad, Angry, Neutral) as a hierarchical ontology.
-*   **Lexicon Integration:** Mapped **[Number]** Sinhala keywords (e.g., "සතුට" -> Happy) directly to ontology classes.
-*   **Deterministic Reasoning:** specifically designed to handle **explicit emotional triggers** with 100% precision.
-*   **Standard Compliance:** Aligned with the **Information Artifact Ontology (IAO)** and **Emotion Frame Ontology (EFO)** principles (De Giorgis et al., 2024).
+*   **18 Emotion Frames** (e.g., PhysicalHarm, PositiveEmotion, LossExperience) with role-dependent emotion mappings.
+*   **Linguistic Modifiers:** Negation flipping, intensifier/diminisher scaling, contrastive discourse connectives.
+*   **Semantic Role Detection:** Agent vs. Patient perspective changes the emotion (e.g., "I hit" → Angry, "I was hit" → Sad).
 
-**Methodology:**
-1.  **Extraction:** Collected domain-specific keywords from the "Voice Cut" dataset.
-2.  **Formalization:** Converted keywords into RDF/OWL triples (`Word` -> `hasEmotion` -> `Emotion`).
-3.  **Visualization:** Graph-based representation of emotional relationships.
+**3-Tier Pipeline:**
 
-**Why this matters:**
-Provides a transparent, explainable "First Line of Defense" for classification, ensuring that known emotional words are never misclassified by the "black box" of Deep Learning.
+**Tier 1 – Linguistic Analysis:**
+Before looking at emotions, the system scans the sentence for contextual clues — negation words (නෑ, නැහැ), intensifiers (හරිම, ගොඩක්), diminishers (පොඩ්ඩක්), discourse connectives like "but" (ඒත්, නමුත්), and semantic role markers that tell us *who* is the doer (Agent) and *who* is affected (Patient).
+
+**Tier 2 – Frame-Based Ontology Matching:**
+Each word is matched not to an emotion directly, but to an **Emotion Frame** (e.g., "ගහනවා" → PhysicalHarm, "සතුටුයි" → PositiveEmotion) via SPARQL queries on the RDF ontology. Each frame carries multiple emotion possibilities depending on the speaker's role, polarity, and what happens under negation.
+
+**Tier 3 – Semantic Inference:**
+The system combines everything: if the speaker is the Patient of a PhysicalHarm frame → Sad (not Angry). If a negation word is near a PositiveEmotion frame → flip to Sad. Intensifiers boost confidence, contrastive connectives like "but" make the latter clause dominate. The final emotion is the one with the strongest combined signal.
+
+**Result:** 92.2% accuracy | Ontology handles 82.4% of decisions at 93.7% accuracy.
+
+**Why it matters:**
+Moves beyond keyword lookup to **context-aware, explainable** emotion reasoning — aligned with the Emotion Frame Ontology (De Giorgis et al., 2024).
 
 ---
 

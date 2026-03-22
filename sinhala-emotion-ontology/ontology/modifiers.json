@@ -1,0 +1,70 @@
+{
+    "negation": {
+        "description": "Sinhala negation particles that flip emotional polarity",
+        "effect": "flip_polarity",
+        "scope": "nearest_frame",
+        "words": [
+            "නෑ",
+            "නැහැ",
+            "නැත",
+            "එපා",
+            "බෑ",
+            "බැහැ",
+            "නැති",
+            "නැතුව",
+            "නොවේ",
+            "නෙවෙයි",
+            "නො",
+            "නැත්තේ"
+        ]
+    },
+    "intensifiers": {
+        "description": "Words that amplify the intensity of an emotion",
+        "effect": "boost_confidence",
+        "levels": {
+            "high": {
+                "multiplier": 1.5,
+                "words": ["හරිම", "ගොඩක්", "මාරම", "ඉතාම", "අතිශයින්", "මාර"]
+            },
+            "medium": {
+                "multiplier": 1.25,
+                "words": ["පට්ට", "මහ", "ඕනවට වඩා", "ගොඩ", "හැබැයිම"]
+            }
+        }
+    },
+    "diminishers": {
+        "description": "Words that reduce the intensity of an emotion",
+        "effect": "reduce_confidence",
+        "multiplier": 0.6,
+        "words": [
+            "පොඩ්ඩක්",
+            "ටිකක්",
+            "අඩුවෙන්",
+            "ටිකට",
+            "පොඩි"
+        ]
+    },
+    "discourse_connectives": {
+        "description": "Connectives that affect how clauses combine emotionally",
+        "types": {
+            "contrastive": {
+                "description": "Contrast connectives: latter clause dominates (e.g., happy BUT sad -> Sad)",
+                "pre_clause_weight": 0.3,
+                "post_clause_weight": 1.5,
+                "words": ["ඒත්", "නමුත්", "හැබැයි", "වුණත්", "උනාට"]
+            },
+            "causal": {
+                "description": "Causal connectives: cause clause explains the emotion",
+                "pre_clause_weight": 1.0,
+                "post_clause_weight": 1.0,
+                "words": ["නිසා", "හින්දා", "නිසාම", "හේතුවෙන්"]
+            },
+            "additive": {
+                "description": "Additive connectives: both clauses contribute equally",
+                "pre_clause_weight": 1.0,
+                "post_clause_weight": 1.0,
+                "words": ["ඒ වගේම", "ඊට අමතරව", "ඒත් එකක්ම"]
+            }
+        }
+    }
+}
