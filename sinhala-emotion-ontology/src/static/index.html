@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinhala Emotion TTS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --surface: #18181b;
+            --surface-hover: #27272a;
+            --border: #3f3f46;
+            --text: #fafafa;
+            --text-dim: #a1a1aa;
+            
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.5);
+            
+            /* Emotion colors */
+            --emo-happy: #10b981;
+            --emo-sad: #8b5cf6;
+            --emo-angry: #ef4444;
+            --emo-neutral: #71717a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 2rem;
+        }
+        
+        .card {
+            background-color: rgba(24, 24, 27, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            background: linear-gradient(135deg, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-dim);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            background-color: rgba(9, 9, 11, 0.8);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px 0 var(--accent-glow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            background-color: #2563eb;
+            box-shadow: 0 6px 20px 0 var(--accent-glow);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        button:disabled {
+            background-color: var(--border);
+            color: var(--text-dim);
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Results panel */
+        .results-panel {
+            margin-top: 2rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+            display: none;
+            animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            background: rgba(255,255,255,0.03);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .metric-label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .badge {
+            padding: 0.35rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .badge.happy { background-color: rgba(16, 185, 129, 0.15); color: var(--emo-happy); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .badge.sad { background-color: rgba(139, 92, 246, 0.15); color: var(--emo-sad); border: 1px solid rgba(139, 92, 246, 0.3); }
+        .badge.angry { background-color: rgba(239, 68, 68, 0.15); color: var(--emo-angry); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .badge.neutral { background-color: rgba(113, 113, 122, 0.15); color: var(--emo-neutral); border: 1px solid rgba(113, 113, 122, 0.3); }
+
+        .confidence-val {
+            font-weight: 600;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        
+        .method-val {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            text-align: right;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        audio {
+            width: 100%;
+            height: 54px;
+            border-radius: 12px;
+            outline: none;
+        }
+        
+        /* Custom UI for audio */
+        audio::-webkit-media-controls-panel {
+            background-color: var(--surface-hover);
+        }
+        audio::-webkit-media-controls-current-time-display,
+        audio::-webkit-media-controls-time-remaining-display {
+            color: var(--text);
+        }
+
+        .error-msg {
+            color: var(--emo-angry);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <h1>Sinhala TTS</h1>
+                <p class="subtitle">Enter Sinhala text to classify emotion and generate speech.</p>
+            </div>
+
+            <div class="input-group">
+                <textarea id="text-input" placeholder="මෙතන ටයිප් කරන්න... (Type here...)">ඔබ නැතිව මට ලොකු පාලුවක් දැනුනා</textarea>
+            </div>
+
+            <button id="generate-btn" onclick="generateVoice()">
+                <span id="btn-text">Generate Voice</span>
+                <div class="loader" id="btn-loader"></div>
+            </button>
+            <div id="error-msg" class="error-msg"></div>
+
+            <div class="results-panel" id="results-panel">
+                <div class="metric-row">
+                    <span class="metric-label">Detected Emotion</span>
+                    <span id="emo-badge" class="badge"></span>
+                </div>
+                <div class="metric-row" style="margin-bottom: 0.5rem;">
+                    <span class="metric-label">Confidence Score</span>
+                    <span id="confidence-val" class="confidence-val"></span>
+                </div>
+                <div class="method-val" id="method-val"></div>
+
+                <div class="audio-container">
+                    <audio id="audio-player" controls></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function generateVoice() {
+            const textInput = document.getElementById('text-input').value.trim();
+            const btn = document.getElementById('generate-btn');
+            const btnText = document.getElementById('btn-text');
+            const loader = document.getElementById('btn-loader');
+            const resultsPanel = document.getElementById('results-panel');
+            const errorMsg = document.getElementById('error-msg');
+            const audioPlayer = document.getElementById('audio-player');
+            
+            if (!textInput) return;
+
+            // UI Loading state
+            btn.disabled = true;
+            btnText.style.display = 'none';
+            loader.style.display = 'block';
+            resultsPanel.style.display = 'none';
+            errorMsg.style.display = 'none';
+            audioPlayer.pause();
+            audioPlayer.removeAttribute('src');
+
+            try {
+                const response = await fetch('/tts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text: textInput,
+                        model_id: 'v3'
+                    })
+                });
+
+                if (!response.ok) throw new Error('API Error: ' + response.statusText);
+
+                const data = await response.json();
+
+                // Setup Voice
+                audioPlayer.src = 'data:audio/wav;base64,' + data.audio_base64;
+                
+                // Update Metrics UI
+                const badge = document.getElementById('emo-badge');
+                const emotion = data.emotion || 'Neutral';
+                badge.textContent = emotion.toUpperCase();
+                badge.className = 'badge ' + emotion.toLowerCase();
+
+                document.getElementById('confidence-val').textContent = (data.confidence * 100).toFixed(1) + '%';
+                document.getElementById('method-val').textContent = 'Method: ' + data.method;
+
+                // Show Panel
+                resultsPanel.style.display = 'block';
+
+                // AUTO PLAY!
+                try {
+                    await audioPlayer.play();
+                } catch(e) {
+                    console.log("Browser auto-play policy blocked dynamic playback.", e);
+                }
+
+            } catch (err) {
+                errorMsg.textContent = 'Failed to generate voice. Please check server logs.';
+                errorMsg.style.display = 'block';
+                console.error(err);
+            } finally {
+                // Restore button
+                btn.disabled = false;
+                btnText.style.display = 'block';
+                loader.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

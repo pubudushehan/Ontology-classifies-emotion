@@ -5,9 +5,10 @@ A hybrid emotion classification system for Sinhala text, combining an advanced *
 ## 🚀 Features
 - **Hybrid Classification**:
   - **Ontology (3-Tier Semantic Inference)**: Uses a structured knowledge base (RDF) built around `EmotionFrame`s mapping tokens to emotions based on precise matching. Considers Linguistic features like negations, intensifiers, diminishers, discourse connectives, and semantic roles (agent/patient/experiencer).
-  - **Machine Learning (LaBSE)**: Uses Language-agnostic BERT Sentence Embeddings to classify text based on semantic similarity to known emotion centroids (acting as a fallback for conflicting frames or unseen words).
-- **FastAPI Backend**: A high-performance web API to serve the classification model.
-- **Interactive UI**: Swagger UI for easy testing and demonstrations.
+  - **Machine Learning (LaBSE)**: Uses Language-agnostic BERT Sentence Embeddings to classify text based on semantic similarity to known emotion centroids.
+- **Sinhala Voice Synthesis (TTS)**: Seamlessly integrates a fine-tuned VITS machine learning model to generate natural-sounding spoken audio directly from analyzed Sinhala text. Includes intelligent Unicode character romanization handling.
+- **Dedicated Web UI**: A stunning, responsive Dark Mode dashboard designed with Glassmorphism to input text, view real-time emotion color badges, and auto-play generated voice responses instantly.
+- **FastAPI Backend**: A high-performance web API to serve the classification logic and deliver Base64 encoded audio payloads.
 - **Data-Driven**: Trained on ~3,500 real Sinhala voice cut samples.
 
 ---
@@ -19,8 +20,10 @@ A hybrid emotion classification system for Sinhala text, combining an advanced *
 | **Language** | **Python** (3.9+) | Core programming language. |
 | **Ontology** | **RDFLib** | Creating and querying the RDF/OWL ontology graph using SPARQL. |
 | **Embeddings** | **Sentence-Transformers** | Loading the `LaBSE` model for semantic text vectorization. |
-| **Web API** | **FastAPI** | Exposing the classification logic as a REST endpoint. |
+| **Web API** | **FastAPI** | Exposing the classification logic as REST endpoints. |
 | **Server** | **Uvicorn** | ASGI server to run the FastAPI application. |
+| **Synthesis** | **Coqui TTS** | Offline VITS generator for deep neural network speech parsing. |
+| **Frontend UI** | **Vanilla HTML/CSS/JS**| Sleek styling logic running directly from FastAPI's Static parser. |
 | **NLP** | **IndicNLP Library** | Tokenizing Sinhala text efficiently. |
 | **Math** | **NumPy** | Vector operations for cosine similarity calculations. |
 
@@ -44,9 +47,18 @@ Here is a detailed breakdown of the project files:
         2. **Tier 2 (Frame-Based Ontology Matching)**: Matches tokens to `EmotionFrame`s via SPARQL query.
         3. **Tier 3 (Semantic Inference)**: Combines matched frames with linguistic markers to accumulate weighted confidence scores for each emotion.
         4. **Fallback**: If there is no clear dominating ontology match (or no matches at all), it defaults to LaBSE cosine similarity against the pre-computed ML centroids.
+*   **`tts_manager.py`**:
+    *   **Purpose**: Handles lazy-loading and hardware inference mapping of the TTS models.
+    *   **Details**: Binds the fine-tuned Sinhala VITS model (`.pth` + `config.json`), processes input generation, and returns optimized binary WAV audio payloads securely. 
+*   **`sinhala_to_roman.py`**:
+    *   **Purpose**: Cross-script transliterator component.
+    *   **Details**: Detects/normalizes malformed Sinhala Unicode strokes and strictly converts complex Sinhala symbols into standard Romanized English vocabulary compatible with the core VITS tensors.
+*   **`static/index.html`**:
+    *   **Purpose**: The central Web Dashboard.
+    *   **Details**: Provides the premium visual portal users interact with at the core API root. Auto-decodes Base64 audio from the API endpoint and manages HTML5 media playback automatically.
 *   **`app.py`**:
-    *   **Purpose**: The Web Application entry point.
-    *   **Details**: Initializes the `EmotionClassifier` and defines the `/classify` API endpoint. Serves Swagger UI at `/docs`.
+    *   **Purpose**: The Web Application architecture entry point.
+    *   **Details**: Initializes the `EmotionClassifier` and `TTSManager`. Routes `/` to the front-end Web UI, exposes `/tts` (POST) for unified emotion-classification + speech synthesis, and `/classify` (GET). Serves background Swagger API documentation at `/docs`.
 *   **`evaluate.py`**:
     *   **Purpose**: Evaluation script.
     *   **Details**: Runs the classifier against a random sample of the dataset to calculate Accuracy and F1-scores.
@@ -65,6 +77,10 @@ Here is a detailed breakdown of the project files:
 *   **`data/centroids.pkl`**:
     *   A serialized binary file containing the computed vector centroids for 'Happy', 'Sad', and 'Angry'.
 
+### 3. Models (`models/`)
+*   **`sinhala_vits/model.pth` & `config.json`**:
+    *   The fine-tuned VITS deep learning neural network weights and configuration mapping optimized specifically for authentic Sinhala pronunciation, intonation, and rhythm.
+
 ### 3. Root Files
 *   **`requirements.txt`**: List of all Python dependencies required to run the project.
 *   **`README.md`**: Project documentation (this file).
@@ -73,12 +89,25 @@ Here is a detailed breakdown of the project files:
 
 ## 🏃‍♂️ Setup & Installation
 
+*(Note: **Python 3.11** is strictly required to ensure compatibility with the Coqui TTS architecture)*
+
 1.  **Clone/Navigate to Project**:
     ```bash
     cd sinhala-emotion-ontology
     ```
 
-2.  **Install Dependencies**:
+2.  **Create and Activate Virtual Environment**:
+    ```bash
+    python3.11 -m venv venv
+    
+    # On macOS/Linux:
+    source venv/bin/activate
+    
+    # On Windows:
+    .\venv\Scripts\activate
+    ```
+
+3.  **Install Dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
@@ -97,16 +126,23 @@ Here is a detailed breakdown of the project files:
 ## 🎮 Usage
 
 ### Start the API Server
-Run the following command to start the web application:
+Ensure your virtual environment is still activated. Start the web application by running `uvicorn` as a module (to guarantee it uses your virtual environment):
 ```bash
-uvicorn src.app:app --reload
+python -m uvicorn src.app:app --reload
 ```
 
 ### Access the Interface
-Open your browser and navigate to:
-👉 **[http://localhost:8000/docs](http://localhost:8000/docs)**
+Open your browser and navigate to the base address:
+👉 **[http://localhost:8000/](http://localhost:8000/)**
 
-You will see the **Swagger UI** where you can examine the API and execute tests.
+You will see the **Sinhala Emotion TTS Dashboard** where you can type your phrases, view visual emotion tags, and hear the system speak to you directly. 
+
+*(If you are an engineer looking to test the raw programmatic data definitions, you can navigate to `http://localhost:8000/docs` to interface with the built-in Swagger APIs)*
+
+### Core API Endpoint: `/tts` (POST)
+- **Method**: `POST`
+- **Body Requirement**: `{"text": "ඔබ නැතිව මට ලොකු පාලුවක්...", "model_id": "sinhala_vits"}`
+- **Payload Behavior**: Connects your text to the mathematical ontology, retrieves its confidence matrices, hands the text sequentially to the semantic romanizer, and outputs a `base64` encoded chunk of speech embedded tightly inside your JSON output window!
 
 ### API Endpoint: `/classify`
 - **Method**: `GET`

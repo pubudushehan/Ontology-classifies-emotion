@@ -1,0 +1,4 @@
+  curl -X POST http://localhost:8000/tts \
+     -H "Content-Type: application/json" \
+     -d '{"text": "Oyata kohomadha"}' \
+     --output output.wav
