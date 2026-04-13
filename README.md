@@ -1,4 +1,4 @@
-# Sinhala Emotion Ontology Project Hi 🇱🇰
+# Sinhala Emotion Ontology Project 🇱🇰
 
 A hybrid emotion classification system for Sinhala text, combining an advanced **3-Tier Semantic Frame-based Ontology** (RDF/OWL) and **Machine Learning embeddings** (LaBSE). This project allows users to classify Sinhala sentences into four emotions: **Happy** (සතුට), **Sad** (දුක), **Angry** (කෝප), and **Neutral** (සාමාන්‍ය).
 
