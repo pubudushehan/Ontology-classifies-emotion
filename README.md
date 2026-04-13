@@ -210,3 +210,48 @@ The system combines frames from Tier 2 with structural modifiers from Tier 1:
 **5. Decision Rules Output**
 *   Because Ontology-driven inference resolves clearly pointing to **Sad**, the engine returns `Sad` as the emotion and includes an explanation trail showing the multiplier boosts and negation flips. 
 *   *(If multiple conflicting emotions matched with comparable weights, the engine would have skipped the ontology scores entirely and defaulted to executing an ML fallback by generating a LaBSE vector for the sentence and comparing it via Cosine Similarity against the ML Centroids computed in `data/centroids.pkl`)*
+
+---
+
+## 🎓 Research Details
+
+**UNIVERSITY OF SRI JAYEWARDENEPURA**  
+**Faculty of Technology**  
+**Department of Information and Communication Technology**  
+
+### SEMANTIC-AWARE EMOTIONAL TEXT-TO-SPEECH FOR SINHALA: A SINGLE-SPEAKER DEEP LEARNING APPROACH
+
+#### Research Students
+* **S.P.A.S. Jayasiri** – ICT/21/860  
+  Software Technology Stream  
+  Email: ict21860@fot.sjp.ac.lk
+* **K.A.P.S. Karunarathna** – ICT/21/867  
+  Software Technology Stream  
+  Email: ict21867@fot.sjp.ac.lk
+* **A.V.N.J. Pemarathna** – ICT/21/896  
+  Multimedia Technology Stream  
+  Email: ict21896@fot.sjp.ac.lk
+
+#### Supervisors
+* **Dr. Prabhani Liyanage** (Main Supervisor)  
+  Senior Lecturer (Grade II), Faculty of Technology  
+  Email: prabani@sjp.ac.lk
+* **Akalanka Panapitiya** (Co-Supervisor)  
+  Lecturer, Faculty of Technology  
+  Email: akalankap@sjp.ac.lk
+* **Nirasha Kulasooriya** (Co-Supervisor)  
+  Lecturer, Faculty of Technology  
+  Email: nirashakulasooriya@sjp.ac.lk
+
+#### Acknowledgement
+This thesis represents a major academic milestone in the Bachelor of Information and Communication Technology Honours degree programme offered by the Faculty of Technology, University of Sri Jayewardenepura. The research journey demanded sustained effort in literature review, dataset construction, semantic modelling, speech processing, experimentation, and documentation.
+
+The research team expresses sincere gratitude to the main supervisor, Dr. Prabhani Liyanage, for continuous guidance, constructive feedback, and encouragement throughout the project. Her insights helped refine the research problem, strengthen the methodology, and maintain the academic quality of the work from proposal stage to final thesis.
+
+Heartfelt thanks are also extended to Mr. Akalanka Panapitiya and Ms. Nirasha Kulasooriya, co-supervisors of the project, for their technical feedback, practical suggestions, and critical observations during discussions on data collection, semantic emotion analysis, model design, and presentation preparation. Their comments significantly improved both the research direction and the implementation.
+
+The authors are grateful to the Project Administration and Evaluation Committee (PAEC) and the Project Evaluation Panel (PEP) for providing a clear evaluation framework, structured milestones, and timely feedback that helped keep the project aligned with departmental expectations. Appreciation is also due to the Department of ICT and the Faculty of Technology for providing the academic environment and facilities necessary to carry out this research.
+
+Special thanks are offered to the voice participant Mr. S Kavindu Rasanjana Senadheera who contributed invaluable time and effort during multiple recording sessions, as well as to all individuals who assisted with reviews, validation, and technical troubleshooting.
+
+Finally, the authors thank their families and friends for their patience, understanding, and continuous encouragement throughout the demanding phases of this research.
