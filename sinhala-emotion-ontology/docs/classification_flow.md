@@ -1,4 +1,4 @@
-# 🧠 Sinhala Emotion Classification: Logic Flow Explained
+# Sinhala Emotion Classification: Logic Flow Explained
 
 This document explains exactly how the system decides whether a sentence is **Happy**, **Sad**, **Angry**, or **Neutral**. It uses a **Hybrid Approach**, meaning it combines strict Rules (Ontology) with AI intuition (Machine Learning).
 

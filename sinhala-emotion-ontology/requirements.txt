@@ -4,3 +4,8 @@ fastapi==0.115.0
 uvicorn==0.30.6
 indic-nlp-library==0.92
 numpy<2
+TTS==0.22.0
+torch>=2.0.0
+soundfile
+pydub
+python-dotenv
